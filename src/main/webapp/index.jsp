@@ -46,7 +46,7 @@
     <!-- topbar starts -->
     <div class="navbar navbar-default" role="navigation">
 
-        <div class="navbar-inner">
+        <%--<div class="navbar-inner">
             <button type="button" class="navbar-toggle pull-left animated flip">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -114,7 +114,7 @@
                 </li>
             </ul>
 
-        </div>
+        </div>--%>
     </div>
     <!-- topbar ends -->
 <div class="ch-container">
@@ -141,7 +141,7 @@
                         </li>
                         <li><a class="ajax-link" href="gallery.html"><i class="glyphicon glyphicon-picture"></i><span> Gallery</span></a>
                         </li>
-                        <li class="nav-header hidden-md">Sample Section</li>
+                        <%--<li class="nav-header hidden-md">Sample Section</li>
                         <li><a class="ajax-link" href="table.html"><i
                                     class="glyphicon glyphicon-align-justify"></i><span> Tables</span></a></li>
                         <li class="accordion">
@@ -161,9 +161,9 @@
                         <li><a href="error.html"><i class="glyphicon glyphicon-ban-circle"></i><span> Error Page</span></a>
                         </li>
                         <li><a href="login.html"><i class="glyphicon glyphicon-lock"></i><span> Login Page</span></a>
-                        </li>
+                        </li>--%>
                     </ul>
-                    <label id="for-is-ajax" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
+                    <%--<label id="for-is-ajax" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>--%>
                 </div>
             </div>
         </div>
@@ -196,7 +196,7 @@
     <div class="box col-md-12">
     <div class="box-inner">
     <div class="box-header well" data-original-title="">
-        <h2><i class="glyphicon glyphicon-user"></i> Datatable + Responsive</h2>
+        <%--<h2><i class="glyphicon glyphicon-user"></i> Datatable + Responsive</h2>--%>
 
         <div class="box-icon">
             <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
@@ -206,7 +206,7 @@
         </div>
     </div>
     <div class="box-content">
-    <div class="alert alert-info">For help with such table please check <a href="http://datatables.net/" target="_blank">http://datatables.net/</a></div>
+    <%--<div class="alert alert-info">For help with such table please check <a href="http://datatables.net/" target="_blank">http://datatables.net/</a></div>--%>
     <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
     <thead>
     <tr>
@@ -931,7 +931,7 @@
 
     </div><!--/row-->
 
-    <div class="row">
+    <%--<div class="row">
         <div class="box col-md-12">
             <div class="box-inner">
                 <div class="box-header well" data-original-title="">
@@ -1053,9 +1053,9 @@
         </div>
         <!--/span-->
 
-    </div><!--/row-->
+    </div><!--/row-->--%>
 
-    <div class="row">
+    <%--<div class="row">
         <div class="box col-md-6">
             <div class="box-inner">
                 <div class="box-header well" data-original-title="">
@@ -1219,9 +1219,9 @@
             </div>
         </div>
         <!--/span-->
-    </div><!--/row-->
+    </div><!--/row-->--%>
 
-    <div class="row">
+    <%--<div class="row">
         <div class="box col-md-6">
             <div class="box-inner">
                 <div class="box-header well" data-original-title="">
@@ -1386,9 +1386,9 @@
         </div>
         <!--/span-->
 
-    </div><!--/row-->
+    </div><!--/row-->--%>
 
-    <div class="row">
+    <%--<div class="row">
         <div class="box col-md-12">
             <div class="box-inner">
                 <div class="box-header well" data-original-title="">
@@ -1469,14 +1469,14 @@
                 </div>
             </div>
         </div>
-    </div><!--/span-->
+    </div><!--/span-->--%>
 
     <!-- content ends -->
     </div><!--/#content.col-md-0-->
 </div><!--/fluid-row-->
 
     <!-- Ad, you can remove it -->
-    <div class="row">
+    <%--<div class="row">
         <div class="col-md-9 col-lg-9 col-xs-9 hidden-xs">
             <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
             <!-- Charisma Demo 2 -->
@@ -1504,7 +1504,7 @@
             <!--End mc_embed_signup-->
         </div>
 
-    </div>
+    </div>--%>
     <!-- Ad ends -->
 
     <hr>
