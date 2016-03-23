@@ -2,695 +2,1577 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
     String path = request.getContextPath();
-    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+    String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path;
 %>
-<%--<%@ taglib prefix="sitemesh" uri="http://www.opensymphony.com/sitemesh/decorator" %>--%>
-<%--<%@ taglib prefix="decorator" uri="http://www.opensymphony.com/sitemesh/decorator" %>--%>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Nova Console</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
-    <!-- Bootstrap 3.3.4 -->
-    <link href="<%=basePath%>adminlte/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <!-- FontAwesome 4.3.0 -->
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-    <!-- Ionicons 2.0.0 -->
-    <link href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css" />
-    <!-- Theme style -->
-    <link href="<%=basePath%>adminlte/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link href="<%=basePath%>adminlte/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
-    <!-- iCheck -->
-    <link href="<%=basePath%>adminlte/plugins/iCheck/flat/blue.css" rel="stylesheet" type="text/css" />
-    <!-- Morris chart -->
-    <link href="<%=basePath%>adminlte/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
-    <!-- jvectormap -->
-    <link href="<%=basePath%>adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
-    <!-- Date Picker -->
-    <link href="<%=basePath%>adminlte/plugins/datepicker/datepicker3.css" rel="stylesheet" type="text/css" />
-    <!-- Daterange picker -->
-    <link href="<%=basePath%>adminlte/plugins/daterangepicker/daterangepicker-bs3.css" rel="stylesheet" type="text/css" />
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link href="<%=basePath%>adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
+    <meta charset="utf-8">
+    <title>Free HTML5 Bootstrap Admin Template</title>
 
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!-- The styles -->
+    <link id="bs-css" href="<%=basePath%>/charisma/css/bootstrap-cerulean.min.css" rel="stylesheet">
+
+    <link href="<%=basePath%>/charismacss/charisma-app.css" rel="stylesheet">
+    <link href='<%=basePath%>/charismabower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charismabower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='<%=basePath%>/charismabower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charismabower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charismabower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charismabower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charismacss/jquery.noty.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charismacss/noty_theme_default.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charismacss/elfinder.min.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charismacss/elfinder.theme.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charismacss/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charismacss/uploadify.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charismacss/animate.min.css' rel='stylesheet'>
+
+    <!-- jQuery -->
+    <script src="bower_components/jquery/jquery.min.js"></script>
+
+    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+
+    <!-- The fav icon -->
+    <link rel="shortcut icon" href="<%=basePath%>/charismaimg/favicon.ico">
+
 </head>
 
-<body class="skin-blue sidebar-mini">
-<div class="wrapper">
+<body>
+    <!-- topbar starts -->
+    <div class="navbar navbar-default" role="navigation">
 
-    <header class="main-header">
-        <!-- Logo -->
-        <div class="logo">
-            <span class="logo-lg"><b>Nova Console</b></span>
-        </div>
-        <!-- Header Navbar: style can be found in header.less -->
-        <nav class="navbar navbar-static-top" role="navigation">
-            <!-- Sidebar toggle button-->
-            <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <div class="navbar-inner">
+            <button type="button" class="navbar-toggle pull-left animated flip">
                 <span class="sr-only">Toggle navigation</span>
-            </a>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"> <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/>
+                <span>Charisma</span></a>
 
-            <div class="navbar-custom-menu">
-                <ul class="nav navbar-nav">
-
-                    <!-- Messages: style can be found in dropdown.less-->
-                    <!-- 邮件 -->
-                    <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-envelope-o"></i>
-                            <span class="label label-success">4</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 4 messages</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li><!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
-                                            </div>
-                                            <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li><!-- end message -->
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                AdminLTE Design Team
-                                                <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                Developers
-                                                <small><i class="fa fa-clock-o"></i> Today</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                Sales Department
-                                                <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="user image"/>
-                                            </div>
-                                            <h4>
-                                                Reviewers
-                                                <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">See All Messages</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- 通知 -->
-                    <!-- Notifications: style can be found in dropdown.less -->
-                    <li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-bell-o"></i>
-                            <span class="label label-warning">10</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 10 notifications</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause design problems
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-red"></i> 5 new members joined
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-user text-red"></i> You changed your username
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="footer"><a href="#">View all</a></li>
-                        </ul>
-                    </li>
-
-                    <!-- 任务 -->
-                    <!-- Tasks: style can be found in dropdown.less -->
-                    <li class="dropdown tasks-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="fa fa-flag-o"></i>
-                            <span class="label label-danger">9</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">You have 9 tasks</li>
-                            <li>
-                                <!-- inner menu: contains the actual data -->
-                                <ul class="menu">
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Design some buttons
-                                                <small class="pull-right">20%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">20% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Create a nice theme
-                                                <small class="pull-right">40%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">40% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Some task I need to do
-                                                <small class="pull-right">60%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">60% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                    <li><!-- Task item -->
-                                        <a href="#">
-                                            <h3>
-                                                Make beautiful transitions
-                                                <small class="pull-right">80%</small>
-                                            </h3>
-                                            <div class="progress xs">
-                                                <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                    <span class="sr-only">80% Complete</span>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    </li><!-- end task item -->
-                                </ul>
-                            </li>
-                            <li class="footer">
-                                <a href="#">View all tasks</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- 账户-->
-                    <!-- User Account: style can be found in dropdown.less -->
-                    <li class="dropdown user user-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image"/>
-                            <span class="hidden-xs">一饭</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <!-- User image -->
-                            <li class="user-header">
-                                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-                                <p>
-                                    一饭，软件工程师
-                                    <small>基础平台</small>
-                                </p>
-                            </li>
-                            <!-- Menu Body -->
-                            <li class="user-body">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
-                            </li>
-                            <!-- Menu Footer-->
-                            <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">简历</a>
-                                </div>
-                                <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">退出</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <!-- Control Sidebar Toggle Button -->
-                    <li>
-                        <!-- <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a> -->
-                    </li>
+            <!-- user dropdown starts -->
+            <div class="btn-group pull-right">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-user"></i><span class="hidden-sm hidden-xs"> admin</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Profile</a></li>
+                    <li class="divider"></li>
+                    <li><a href="login.html">Logout</a></li>
                 </ul>
             </div>
-        </nav>
-    </header>
+            <!-- user dropdown ends -->
 
-    <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-            <!-- Sidebar user panel -->
-            <!-- <div class="user-panel">
-              <div class="pull-left image">
-                <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image" />
-              </div>
-              <div class="pull-left info">
-                <p>一饭</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-              </div>
-            </div> -->
-            <!-- search form -->
-            <!-- <form action="#" method="get" class="sidebar-form">
-              <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                <span class="input-group-btn">
-                  <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
-              </div>
-            </form> -->
-            <!-- /.search form -->
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-            <ul class="sidebar-menu">
-                <!-- <li class="header">MAIN NAVIGATION</li> -->
-                <%--<li class="active treeview">--%>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-dashboard"></i> <span>应用列表</span> <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li class="active"><a href=""><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                        <li><a href=""><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-files-o"></i>
-                        <span>动态配置</span>
-                        <span class="label label-primary pull-right">4</span>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                        <li><a href="pages/layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                        <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                        <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+            <!-- theme selector starts -->
+            <div class="btn-group pull-right theme-container animated tada">
+                <button class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    <i class="glyphicon glyphicon-tint"></i><span
+                        class="hidden-sm hidden-xs"> Change Theme / Skin</span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu" id="themes">
+                    <li><a data-value="classic" href="#"><i class="whitespace"></i> Classic</a></li>
+                    <li><a data-value="cerulean" href="#"><i class="whitespace"></i> Cerulean</a></li>
+                    <li><a data-value="cyborg" href="#"><i class="whitespace"></i> Cyborg</a></li>
+                    <li><a data-value="simplex" href="#"><i class="whitespace"></i> Simplex</a></li>
+                    <li><a data-value="darkly" href="#"><i class="whitespace"></i> Darkly</a></li>
+                    <li><a data-value="lumen" href="#"><i class="whitespace"></i> Lumen</a></li>
+                    <li><a data-value="slate" href="#"><i class="whitespace"></i> Slate</a></li>
+                    <li><a data-value="spacelab" href="#"><i class="whitespace"></i> Spacelab</a></li>
+                    <li><a data-value="united" href="#"><i class="whitespace"></i> United</a></li>
+                </ul>
+            </div>
+            <!-- theme selector ends -->
+
+            <ul class="collapse navbar-collapse nav navbar-nav top-menu">
+                <li><a href="#"><i class="glyphicon glyphicon-globe"></i> Visit Site</a></li>
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown"><i class="glyphicon glyphicon-star"></i> Dropdown <span
+                            class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
                     </ul>
                 </li>
                 <li>
-                    <a href="pages/widgets.html">
-                        <i class="fa fa-th"></i> <span>Widgets</span> <small class="label pull-right bg-green">new</small>
-                    </a>
+                    <form class="navbar-search pull-left">
+                        <input placeholder="Search" class="search-query form-control col-md-10" name="query"
+                               type="text">
+                    </form>
                 </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-pie-chart"></i>
-                        <span>Charts</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-                        <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-                        <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-                        <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-laptop"></i>
-                        <span>UI Elements</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-                        <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-                        <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-                        <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-                        <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-                        <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-edit"></i> <span>Forms</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-                        <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-                        <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-table"></i> <span>Tables</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/tables/simple.html"><i class="fa fa-circle-o"></i> Simple tables</a></li>
-                        <li><a href="pages/tables/data.html"><i class="fa fa-circle-o"></i> Data tables</a></li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="pages/calendar.html">
-                        <i class="fa fa-calendar"></i> <span>Calendar</span>
-                        <small class="label pull-right bg-red">3</small>
-                    </a>
-                </li>
-                <li>
-                    <a href="pages/mailbox/mailbox.html">
-                        <i class="fa fa-envelope"></i> <span>Mailbox</span>
-                        <small class="label pull-right bg-yellow">12</small>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-folder"></i> <span>Examples</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="pages/examples/invoice.html"><i class="fa fa-circle-o"></i> Invoice</a></li>
-                        <li><a href="pages/examples/login.html"><i class="fa fa-circle-o"></i> Login</a></li>
-                        <li><a href="pages/examples/register.html"><i class="fa fa-circle-o"></i> Register</a></li>
-                        <li><a href="pages/examples/lockscreen.html"><i class="fa fa-circle-o"></i> Lockscreen</a></li>
-                        <li><a href="pages/examples/404.html"><i class="fa fa-circle-o"></i> 404 Error</a></li>
-                        <li><a href="pages/examples/500.html"><i class="fa fa-circle-o"></i> 500 Error</a></li>
-                        <li><a href="pages/examples/blank.html"><i class="fa fa-circle-o"></i> Blank Page</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="#">
-                        <i class="fa fa-share"></i> <span>Multilevel</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
-                        <li>
-                            <a href="#"><i class="fa fa-circle-o"></i> Level One <i class="fa fa-angle-left pull-right"></i></a>
-                            <ul class="treeview-menu">
-                                <li><a href="#"><i class="fa fa-circle-o"></i> Level Two</a></li>
-                                <li>
-                                    <a href="#"><i class="fa fa-circle-o"></i> Level Two <i class="fa fa-angle-left pull-right"></i></a>
-                                    <ul class="treeview-menu">
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                        <li><a href="#"><i class="fa fa-circle-o"></i> Level Three</a></li>
-                                    </ul>
-                                </li>
+            </ul>
+
+        </div>
+    </div>
+    <!-- topbar ends -->
+<div class="ch-container">
+    <div class="row">
+        
+        <!-- left menu starts -->
+        <div class="col-sm-2 col-lg-2">
+            <div class="sidebar-nav">
+                <div class="nav-canvas">
+                    <div class="nav-sm nav nav-stacked">
+
+                    </div>
+                    <ul class="nav nav-pills nav-stacked main-menu">
+                        <li class="nav-header">Main</li>
+                        <li><a class="ajax-link" href="index.html"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="ui.html"><i class="glyphicon glyphicon-eye-open"></i><span> UI Features</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="form.html"><i
+                                    class="glyphicon glyphicon-edit"></i><span> Forms</span></a></li>
+                        <li><a class="ajax-link" href="chart.html"><i class="glyphicon glyphicon-list-alt"></i><span> Charts</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="typography.html"><i class="glyphicon glyphicon-font"></i><span> Typography</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="gallery.html"><i class="glyphicon glyphicon-picture"></i><span> Gallery</span></a>
+                        </li>
+                        <li class="nav-header hidden-md">Sample Section</li>
+                        <li><a class="ajax-link" href="table.html"><i
+                                    class="glyphicon glyphicon-align-justify"></i><span> Tables</span></a></li>
+                        <li class="accordion">
+                            <a href="#"><i class="glyphicon glyphicon-plus"></i><span> Accordion Menu</span></a>
+                            <ul class="nav nav-pills nav-stacked">
+                                <li><a href="#">Child Menu 1</a></li>
+                                <li><a href="#">Child Menu 2</a></li>
                             </ul>
                         </li>
-                        <li><a href="#"><i class="fa fa-circle-o"></i> Level One</a></li>
+                        <li><a class="ajax-link" href="calendar.html"><i class="glyphicon glyphicon-calendar"></i><span> Calendar</span></a>
+                        </li>
+                        <li><a class="ajax-link" href="grid.html"><i
+                                    class="glyphicon glyphicon-th"></i><span> Grid</span></a></li>
+                        <li><a href="tour.html"><i class="glyphicon glyphicon-globe"></i><span> Tour</span></a></li>
+                        <li><a class="ajax-link" href="icon.html"><i
+                                    class="glyphicon glyphicon-star"></i><span> Icons</span></a></li>
+                        <li><a href="error.html"><i class="glyphicon glyphicon-ban-circle"></i><span> Error Page</span></a>
+                        </li>
+                        <li><a href="login.html"><i class="glyphicon glyphicon-lock"></i><span> Login Page</span></a>
+                        </li>
                     </ul>
-                </li>
-                <li><a href="documentation/index.html"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-                <!-- <li class="header">LABELS</li>
-                <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-                <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li> -->
-            </ul>
-        </section>
-        <!-- /.sidebar -->
-    </aside>
+                    <label id="for-is-ajax" for="is-ajax"><input id="is-ajax" type="checkbox"> Ajax on menu</label>
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+        <!-- left menu ends -->
 
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <h2><a href="add">添加用户</a></h2>
-        －－－－－－
-        <c:forEach items="${users}" var="um">
-            <p>账号：${um.value.username}  密码：${um.value.password} <a href="${um.key}">查看</a> | <a href="${um.key}/update">修改</a></p>
-        </c:forEach>
-        －－－－－－
-    </div><!-- /.content-wrapper -->
+        <noscript>
+            <div class="alert alert-block col-md-12">
+                <h4 class="alert-heading">Warning!</h4>
+
+                <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a>
+                    enabled to use this site.</p>
+            </div>
+        </noscript>
+
+        <div id="content" class="col-lg-10 col-sm-10">
+            <!-- content starts -->
+                <div>
+        <ul class="breadcrumb">
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">Tables</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+    <div class="box col-md-12">
+    <div class="box-inner">
+    <div class="box-header well" data-original-title="">
+        <h2><i class="glyphicon glyphicon-user"></i> Datatable + Responsive</h2>
+
+        <div class="box-icon">
+            <a href="#" class="btn btn-setting btn-round btn-default"><i class="glyphicon glyphicon-cog"></i></a>
+            <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                    class="glyphicon glyphicon-chevron-up"></i></a>
+            <a href="#" class="btn btn-close btn-round btn-default"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </div>
+    <div class="box-content">
+    <div class="alert alert-info">For help with such table please check <a href="http://datatables.net/" target="_blank">http://datatables.net/</a></div>
+    <table class="table table-striped table-bordered bootstrap-datatable datatable responsive">
+    <thead>
+    <tr>
+        <th>Username</th>
+        <th>Date registered</th>
+        <th>Role</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>David R</td>
+        <td class="center">2012/01/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-success label label-default">Active</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Chris Jack</td>
+        <td class="center">2012/01/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-success label label-default">Active</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Jack Chris</td>
+        <td class="center">2012/01/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-success label label-default">Active</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Muhammad Usman</td>
+        <td class="center">2012/01/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-success label label-default">Active</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Sheikh Heera</td>
+        <td class="center">2012/02/01</td>
+        <td class="center">Staff</td>
+        <td class="center">
+            <span class="label-default label label-danger">Banned</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Helen Garner</td>
+        <td class="center">2012/02/01</td>
+        <td class="center">Staff</td>
+        <td class="center">
+            <span class="label-default label label-danger">Banned</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Saruar Ahmed</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-warning label label-default">Pending</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Ahemd Saruar</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-warning label label-default">Pending</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Habib Rizwan</td>
+        <td class="center">2012/01/21</td>
+        <td class="center">Staff</td>
+        <td class="center">
+            <span class="label-success label label-default">Active</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Rizwan Habib</td>
+        <td class="center">2012/01/21</td>
+        <td class="center">Staff</td>
+        <td class="center">
+            <span class="label-success label label-default">Active</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Amrin Sana</td>
+        <td class="center">2012/08/23</td>
+        <td class="center">Staff</td>
+        <td class="center">
+            <span class="label-default label label-danger">Banned</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Sana Amrin</td>
+        <td class="center">2012/08/23</td>
+        <td class="center">Staff</td>
+        <td class="center">
+            <span class="label-default label label-danger">Banned</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Ifrah Jannat</td>
+        <td class="center">2012/06/01</td>
+        <td class="center">Admin</td>
+        <td class="center">
+            <span class="label-default label">Inactive</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Jannat Ifrah</td>
+        <td class="center">2012/06/01</td>
+        <td class="center">Admin</td>
+        <td class="center">
+            <span class="label-default label">Inactive</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Robert</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-warning label label-default">Pending</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Dave Robert</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-warning label label-default">Pending</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Brown Robert</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-warning label label-default">Pending</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Usman Muhammad</td>
+        <td class="center">2012/01/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-success label label-default">Active</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Abdullah</td>
+        <td class="center">2012/02/01</td>
+        <td class="center">Staff</td>
+        <td class="center">
+            <span class="label-default label label-danger">Banned</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Dow John</td>
+        <td class="center">2012/02/01</td>
+        <td class="center">Admin</td>
+        <td class="center">
+            <span class="label-default label">Inactive</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>John R</td>
+        <td class="center">2012/02/01</td>
+        <td class="center">Admin</td>
+        <td class="center">
+            <span class="label-default label">Inactive</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Paul Wilson</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-warning label label-default">Pending</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Wilson Paul</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-warning label label-default">Pending</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Heera Sheikh</td>
+        <td class="center">2012/01/21</td>
+        <td class="center">Staff</td>
+        <td class="center">
+            <span class="label-success label label-default">Active</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Sheikh Heera</td>
+        <td class="center">2012/01/21</td>
+        <td class="center">Staff</td>
+        <td class="center">
+            <span class="label-success label label-default">Active</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Christopher</td>
+        <td class="center">2012/08/23</td>
+        <td class="center">Staff</td>
+        <td class="center">
+            <span class="label-default label label-danger">Banned</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Andro Christopher</td>
+        <td class="center">2012/08/23</td>
+        <td class="center">Staff</td>
+        <td class="center">
+            <span class="label-default label label-danger">Banned</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Jhon Doe</td>
+        <td class="center">2012/06/01</td>
+        <td class="center">Admin</td>
+        <td class="center">
+            <span class="label-default label">Inactive</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Lorem Ipsum</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-warning label label-default">Pending</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Abraham</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-warning label label-default">Pending</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Brown Blue</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-warning label label-default">Pending</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td>Worth Name</td>
+        <td class="center">2012/03/01</td>
+        <td class="center">Member</td>
+        <td class="center">
+            <span class="label-warning label label-default">Pending</span>
+        </td>
+        <td class="center">
+            <a class="btn btn-success" href="#">
+                <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                View
+            </a>
+            <a class="btn btn-info" href="#">
+                <i class="glyphicon glyphicon-edit icon-white"></i>
+                Edit
+            </a>
+            <a class="btn btn-danger" href="#">
+                <i class="glyphicon glyphicon-trash icon-white"></i>
+                Delete
+            </a>
+        </td>
+    </tr>
+    </tbody>
+    </table>
+    </div>
+    </div>
+    </div>
+    <!--/span-->
+
+    </div><!--/row-->
+
+    <div class="row">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2><i class="glyphicon glyphicon-user"></i> Responsive, Swipable Table</h2>
+
+                    <div class="box-icon">
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <table class="table table-striped table-bordered responsive">
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Date registered</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
 
-    <footer class="main-footer">
-        <strong>Copyright &copy; 2015-2016 <a href="http://youzan.com" target="view_window">杭州有赞科技有限公司</a>.</strong> All rights reserved.
-        <div class="pull-right hidden-xs"><b>Version 1.0</b></div>
+                        <tr>
+                            <td>Muhammad Usman</td>
+                            <td class="center">2012/03/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-warning label label-default">Pending</span>
+                            </td>
+                            <td class="center">
+                                <a class="btn btn-success" href="#">
+                                    <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                                    View
+                                </a>
+                                <a class="btn btn-info" href="#">
+                                    <i class="glyphicon glyphicon-edit icon-white"></i>
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger" href="#">
+                                    <i class="glyphicon glyphicon-trash icon-white"></i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Abraham</td>
+                            <td class="center">2012/03/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-warning label label-default">Pending</span>
+                            </td>
+                            <td class="center">
+                                <a class="btn btn-success" href="#">
+                                    <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                                    View
+                                </a>
+                                <a class="btn btn-info" href="#">
+                                    <i class="glyphicon glyphicon-edit icon-white"></i>
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger" href="#">
+                                    <i class="glyphicon glyphicon-trash icon-white"></i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Brown Blue</td>
+                            <td class="center">2012/03/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-warning label label-default">Pending</span>
+                            </td>
+                            <td class="center">
+                                <a class="btn btn-success" href="#">
+                                    <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                                    View
+                                </a>
+                                <a class="btn btn-info" href="#">
+                                    <i class="glyphicon glyphicon-edit icon-white"></i>
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger" href="#">
+                                    <i class="glyphicon glyphicon-trash icon-white"></i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Worth Name</td>
+                            <td class="center">2012/03/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-warning label label-default">Pending</span>
+                            </td>
+                            <td class="center">
+                                <a class="btn btn-success" href="#">
+                                    <i class="glyphicon glyphicon-zoom-in icon-white"></i>
+                                    View
+                                </a>
+                                <a class="btn btn-info" href="#">
+                                    <i class="glyphicon glyphicon-edit icon-white"></i>
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger" href="#">
+                                    <i class="glyphicon glyphicon-trash icon-white"></i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+
+    </div><!--/row-->
+
+    <div class="row">
+        <div class="box col-md-6">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2>Simple Table</h2>
+
+                    <div class="box-icon">
+                        <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Date registered</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Muhammad Usman</td>
+                            <td class="center">2012/01/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-success label label-default">Active</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>White Horse</td>
+                            <td class="center">2012/02/01</td>
+                            <td class="center">Staff</td>
+                            <td class="center">
+                                <span class="label-default label label-danger">Banned</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sheikh Heera</td>
+                            <td class="center">2012/02/01</td>
+                            <td class="center">Admin</td>
+                            <td class="center">
+                                <span class="label-default label">Inactive</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Saruar</td>
+                            <td class="center">2012/03/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-warning label label-default">Pending</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sana Amrin</td>
+                            <td class="center">2012/01/21</td>
+                            <td class="center">Staff</td>
+                            <td class="center">
+                                <span class="label-success label label-default">Active</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <ul class="pagination pagination-centered">
+                        <li><a href="#">Prev</a></li>
+                        <li class="active">
+                            <a href="#">1</a>
+                        </li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+
+        <div class="box col-md-6">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2>Striped Table</h2>
+
+                    <div class="box-icon">
+                        <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <table class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Date registered</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Muhammad Usman</td>
+                            <td class="center">2012/01/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-success label label-default">Active</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>White Horse</td>
+                            <td class="center">2012/02/01</td>
+                            <td class="center">Staff</td>
+                            <td class="center">
+                                <span class="label-default label label-danger">Banned</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sheikh Heera</td>
+                            <td class="center">2012/02/01</td>
+                            <td class="center">Admin</td>
+                            <td class="center">
+                                <span class="label-default label">Inactive</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Saruar</td>
+                            <td class="center">2012/03/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-warning label label-default">Pending</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sana Amrin</td>
+                            <td class="center">2012/01/21</td>
+                            <td class="center">Staff</td>
+                            <td class="center">
+                                <span class="label-success label label-default">Active</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <ul class="pagination pagination-centered">
+                        <li><a href="#">Prev</a></li>
+                        <li class="active">
+                            <a href="#">1</a>
+                        </li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+    </div><!--/row-->
+
+    <div class="row">
+        <div class="box col-md-6">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2>Bordered Table</h2>
+
+                    <div class="box-icon">
+                        <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Date registered</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Muhammad Usman</td>
+                            <td class="center">2012/01/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-success label label-default">Active</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>White Horse</td>
+                            <td class="center">2012/02/01</td>
+                            <td class="center">Staff</td>
+                            <td class="center">
+                                <span class="label-default label label-danger">Banned</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sheikh Heera</td>
+                            <td class="center">2012/02/01</td>
+                            <td class="center">Admin</td>
+                            <td class="center">
+                                <span class="label-default label">Inactive</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Saruar</td>
+                            <td class="center">2012/03/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-warning label label-default">Pending</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sana Amrin</td>
+                            <td class="center">2012/01/21</td>
+                            <td class="center">Staff</td>
+                            <td class="center">
+                                <span class="label-success label label-default">Active</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <ul class="pagination pagination-centered">
+                        <li><a href="#">Prev</a></li>
+                        <li class="active">
+                            <a href="#">1</a>
+                        </li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+
+        <div class="box col-md-6">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2>Condensed Table</h2>
+
+                    <div class="box-icon">
+                        <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <table class="table table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Date registered</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Muhammad Usman</td>
+                            <td class="center">2012/01/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-success label label-default">Active</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>White Horse</td>
+                            <td class="center">2012/02/01</td>
+                            <td class="center">Staff</td>
+                            <td class="center">
+                                <span class="label-default label label-danger">Banned</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sheikh Heera</td>
+                            <td class="center">2012/02/01</td>
+                            <td class="center">Admin</td>
+                            <td class="center">
+                                <span class="label-default label">Inactive</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Saruar</td>
+                            <td class="center">2012/03/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-warning label label-default">Pending</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sana Amrin</td>
+                            <td class="center">2012/01/21</td>
+                            <td class="center">Staff</td>
+                            <td class="center">
+                                <span class="label-success label label-default">Active</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <ul class="pagination pagination-centered">
+                        <li><a href="#">Prev</a></li>
+                        <li class="active">
+                            <a href="#">1</a>
+                        </li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--/span-->
+
+    </div><!--/row-->
+
+    <div class="row">
+        <div class="box col-md-12">
+            <div class="box-inner">
+                <div class="box-header well" data-original-title="">
+                    <h2>Combined All</h2>
+
+                    <div class="box-icon">
+                        <a href="#" class="btn btn-setting btn-round btn-default"><i
+                                class="glyphicon glyphicon-cog"></i></a>
+                        <a href="#" class="btn btn-minimize btn-round btn-default"><i
+                                class="glyphicon glyphicon-chevron-up"></i></a>
+                        <a href="#" class="btn btn-close btn-round btn-default"><i
+                                class="glyphicon glyphicon-remove"></i></a>
+                    </div>
+                </div>
+                <div class="box-content">
+                    <table class="table table-bordered table-striped table-condensed">
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Date registered</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Muhammad Usman</td>
+                            <td class="center">2012/01/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-success label label-default">Active</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>White Horse</td>
+                            <td class="center">2012/02/01</td>
+                            <td class="center">Staff</td>
+                            <td class="center">
+                                <span class="label-default label label-danger">Banned</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sheikh Heera</td>
+                            <td class="center">2012/02/01</td>
+                            <td class="center">Admin</td>
+                            <td class="center">
+                                <span class="label-default label">Inactive</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Saruar</td>
+                            <td class="center">2012/03/01</td>
+                            <td class="center">Member</td>
+                            <td class="center">
+                                <span class="label-warning label label-default">Pending</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Sana Amrin</td>
+                            <td class="center">2012/01/21</td>
+                            <td class="center">Staff</td>
+                            <td class="center">
+                                <span class="label-success label label-default">Active</span>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <ul class="pagination pagination-centered">
+                        <li><a href="#">Prev</a></li>
+                        <li class="active">
+                            <a href="#">1</a>
+                        </li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div><!--/span-->
+
+    <!-- content ends -->
+    </div><!--/#content.col-md-0-->
+</div><!--/fluid-row-->
+
+    <!-- Ad, you can remove it -->
+    <div class="row">
+        <div class="col-md-9 col-lg-9 col-xs-9 hidden-xs">
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <!-- Charisma Demo 2 -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-5108790028230107"
+                 data-ad-slot="3193373905"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        <div class="col-md-2 col-lg-3 col-sm-12 col-xs-12 email-subscription-footer">
+            <div class="mc_embed_signup">
+                <form action="//halalit.us3.list-manage.com/subscribe/post?u=444b176aa3c39f656c66381f6&amp;id=eeb0c04e84" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                    <div>
+                        <label>Keep up with my work</label>
+                        <input type="email" value="" name="EMAIL" class="email" placeholder="Email address" required>
+
+                        <div class="power_field"><input type="text" name="b_444b176aa3c39f656c66381f6_eeb0c04e84" tabindex="-1" value=""></div>
+                        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" class="button"></div>
+                    </div>
+                </form>
+            </div>
+
+            <!--End mc_embed_signup-->
+        </div>
+
+    </div>
+    <!-- Ad ends -->
+
+    <hr>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+         aria-hidden="true">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    <h3>Settings</h3>
+                </div>
+                <div class="modal-body">
+                    <p>Here settings can be configured...</p>
+                </div>
+                <div class="modal-footer">
+                    <a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+                    <a href="#" class="btn btn-primary" data-dismiss="modal">Save changes</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="row">
+        <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="http://usman.it" target="_blank">Muhammad
+                Usman</a> 2012 - 2015</p>
+
+        <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Powered by: <a
+                href="http://usman.it/free-responsive-admin-template">Charisma</a></p>
     </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Create the tabs -->
-        <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-            <li><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a></li>
+</div><!--/.fluid-container-->
 
-            <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-            <!-- Home tab content -->
-            <div class="tab-pane" id="control-sidebar-home-tab">
-                <h3 class="control-sidebar-heading">Recent Activity</h3>
-                <ul class='control-sidebar-menu'>
-                    <li>
-                        <a href='javascript:;'>
-                            <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-                            <div class="menu-info">
-                                <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-                                <p>Will be 23 on April 24th</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='javascript:;'>
-                            <i class="menu-icon fa fa-user bg-yellow"></i>
-                            <div class="menu-info">
-                                <h4 class="control-sidebar-subheading">Frodo Updated His Profile</h4>
-                                <p>New phone +1(800)555-1234</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='javascript:;'>
-                            <i class="menu-icon fa fa-envelope-o bg-light-blue"></i>
-                            <div class="menu-info">
-                                <h4 class="control-sidebar-subheading">Nora Joined Mailing List</h4>
-                                <p>nora@example.com</p>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='javascript:;'>
-                            <i class="menu-icon fa fa-file-code-o bg-green"></i>
-                            <div class="menu-info">
-                                <h4 class="control-sidebar-subheading">Cron Job 254 Executed</h4>
-                                <p>Execution time 5 seconds</p>
-                            </div>
-                        </a>
-                    </li>
-                </ul><!-- /.control-sidebar-menu -->
+<!-- external javascript -->
 
-                <h3 class="control-sidebar-heading">Tasks Progress</h3>
-                <ul class='control-sidebar-menu'>
-                    <li>
-                        <a href='javascript:;'>
-                            <h4 class="control-sidebar-subheading">
-                                Custom Template Design
-                                <span class="label label-danger pull-right">70%</span>
-                            </h4>
-                            <div class="progress progress-xxs">
-                                <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='javascript:;'>
-                            <h4 class="control-sidebar-subheading">
-                                Update Resume
-                                <span class="label label-success pull-right">95%</span>
-                            </h4>
-                            <div class="progress progress-xxs">
-                                <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='javascript:;'>
-                            <h4 class="control-sidebar-subheading">
-                                Laravel Integration
-                                <span class="label label-waring pull-right">50%</span>
-                            </h4>
-                            <div class="progress progress-xxs">
-                                <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href='javascript:;'>
-                            <h4 class="control-sidebar-subheading">
-                                Back End Framework
-                                <span class="label label-primary pull-right">68%</span>
-                            </h4>
-                            <div class="progress progress-xxs">
-                                <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-                            </div>
-                        </a>
-                    </li>
-                </ul><!-- /.control-sidebar-menu -->
+<script src="<%=basePath%>/charismabower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-            </div><!-- /.tab-pane -->
-            <!-- Stats tab content -->
-            <div class="tab-pane" id="control-sidebar-stats-tab">Stats Tab Content</div><!-- /.tab-pane -->
-            <!-- Settings tab content -->
-            <div class="tab-pane" id="control-sidebar-settings-tab">
-                <form method="post">
-                    <h3 class="control-sidebar-heading">General Settings</h3>
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
-                            Report panel usage
-                            <input type="checkbox" class="pull-right" checked />
-                        </label>
-                        <p>
-                            Some information about this general settings option
-                        </p>
-                    </div><!-- /.form-group -->
+<!-- library for cookie management -->
+<script src="<%=basePath%>/charismajs/jquery.cookie.js"></script>
+<!-- calender plugin -->
+<script src='<%=basePath%>/charismabower_components/moment/min/moment.min.js'></script>
+<script src='<%=basePath%>/charismabower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+<!-- data table plugin -->
+<script src='<%=basePath%>/charismajs/jquery.dataTables.min.js'></script>
 
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
-                            Allow mail redirect
-                            <input type="checkbox" class="pull-right" checked />
-                        </label>
-                        <p>
-                            Other sets of options are available
-                        </p>
-                    </div><!-- /.form-group -->
+<!-- select or dropdown enhancer -->
+<script src="<%=basePath%>/charismabower_components/chosen/chosen.jquery.min.js"></script>
+<!-- plugin for gallery image view -->
+<script src="<%=basePath%>/charismabower_components/colorbox/jquery.colorbox-min.js"></script>
+<!-- notification plugin -->
+<script src="<%=basePath%>/charismajs/jquery.noty.js"></script>
+<!-- library for making tables responsive -->
+<script src="<%=basePath%>/charismabower_components/responsive-tables/responsive-tables.js"></script>
+<!-- tour plugin -->
+<script src="<%=basePath%>/charismabower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<!-- star rating plugin -->
+<script src="<%=basePath%>/charismajs/jquery.raty.min.js"></script>
+<!-- for iOS style toggle switch -->
+<script src="<%=basePath%>/charismajs/jquery.iphone.toggle.js"></script>
+<!-- autogrowing textarea plugin -->
+<script src="<%=basePath%>/charismajs/jquery.autogrow-textarea.js"></script>
+<!-- multiple file upload plugin -->
+<script src="<%=basePath%>/charismajs/jquery.uploadify-3.1.min.js"></script>
+<!-- history.js for cross-browser state change on ajax -->
+<script src="<%=basePath%>/charismajs/jquery.history.js"></script>
+<!-- application script for Charisma demo -->
+<script src="<%=basePath%>/charismajs/js/charisma.js"></script>
 
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
-                            Expose author name in posts
-                            <input type="checkbox" class="pull-right" checked />
-                        </label>
-                        <p>
-                            Allow the user to show his name in blog posts
-                        </p>
-                    </div><!-- /.form-group -->
-
-                    <h3 class="control-sidebar-heading">Chat Settings</h3>
-
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
-                            Show me as online
-                            <input type="checkbox" class="pull-right" checked />
-                        </label>
-                    </div><!-- /.form-group -->
-
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
-                            Turn off notifications
-                            <input type="checkbox" class="pull-right" />
-                        </label>
-                    </div><!-- /.form-group -->
-
-                    <div class="form-group">
-                        <label class="control-sidebar-subheading">
-                            Delete chat history
-                            <a href="javascript:;" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-                        </label>
-                    </div><!-- /.form-group -->
-                </form>
-            </div><!-- /.tab-pane -->
-        </div>
-    </aside><!-- /.control-sidebar -->
-    <!-- Add the sidebar's background. This div must be placed
-         immediately after the control sidebar -->
-    <div class='control-sidebar-bg'></div>
-</div><!-- ./wrapper -->
-
-<!-- jQuery 2.1.4 -->
-<script src="<%=basePath%>adminlte/plugins/jQuery/jQuery-2.1.4.min.js"></script>
-<!-- jQuery UI 1.11.2 -->
-<script src="<%=basePath%>adminlte/http://code.jquery.com/ui/1.11.2/jquery-ui.min.js" type="text/javascript"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-    $.widget.bridge('uibutton', $.ui.button);
-</script>
-<!-- Bootstrap 3.3.2 JS -->
-<script src="<%=basePath%>adminlte/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<!-- Morris.js charts -->
-<script src="<%=basePath%>adminlte/http://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-<script src="<%=basePath%>adminlte/plugins/morris/morris.min.js" type="text/javascript"></script>
-<!-- Sparkline -->
-<script src="<%=basePath%>adminlte/plugins/sparkline/jquery.sparkline.min.js" type="text/javascript"></script>
-<!-- jvectormap -->
-<script src="<%=basePath%>adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js" type="text/javascript"></script>
-<script src="<%=basePath%>adminlte/plugins/jvectormap/jquery-jvectormap-world-mill-en.js" type="text/javascript"></script>
-<!-- jQuery Knob Chart -->
-<script src="<%=basePath%>adminlte/plugins/knob/jquery.knob.js" type="text/javascript"></script>
-<!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js" type="text/javascript"></script>
-<script src="<%=basePath%>adminlte/plugins/daterangepicker/daterangepicker.js" type="text/javascript"></script>
-<!-- datepicker -->
-<script src="<%=basePath%>adminlte/plugins/datepicker/bootstrap-datepicker.js" type="text/javascript"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="<%=basePath%>adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
-<!-- Slimscroll -->
-<script src="<%=basePath%>adminlte/plugins/slimScroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-<!-- FastClick -->
-<script src='<%=basePath%>adminlte/plugins/fastclick/fastclick.min.js'></script>
-<!-- AdminLTE App -->
-<script src="<%=basePath%>adminlte/dist/js/app.min.js" type="text/javascript"></script>
-
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<%=basePath%>adminlte/dist/js/pages/dashboard.js" type="text/javascript"></script>
-
-<!-- AdminLTE for demo purposes -->
-<script src="<%=basePath%>adminlte/dist/js/demo.js" type="text/javascript"></script>
 
 </body>
 </html>

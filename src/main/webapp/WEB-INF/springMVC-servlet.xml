@@ -54,5 +54,6 @@
 
     <!--静态资源不拦截-->
     <mvc:resources location="/adminlte/" mapping="/adminlte/**"/>
+    <mvc:resources location="/charisma/" mapping="/charisma/**"/>
 
 </beans>
