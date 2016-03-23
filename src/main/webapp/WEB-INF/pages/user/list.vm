@@ -1,0 +1,28 @@
+<div>
+    <h2><a href="add">添加用户</a></h2>
+    #if ($msg)
+        <h3>$msg</h3>
+    #else
+        <h3>无法显示msg</h3>
+    #end
+
+    <h1>显示后端传来的对象</h1>
+    <p>${x.username} ${x.password}</p>
+    <hr/>
+
+    <h1>迭代List</h1>
+    #foreach($books in $x.books)
+        <p>$books.bookName $books.price</p>
+    #end
+
+    －－－－－－
+    <h2>迭代Map</h2>
+    #foreach($user in $users.entrySet())
+        <p>账号：$!{user.value.username}  密码：$!{user.value.password}
+            <a href="${user.key}">查看</a> |
+            <a href="${user.key}/update">修改</a></p>
+    #end
+    －－－－－－
+    <hr/>
+    $!{message}
+</div>

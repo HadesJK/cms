@@ -1,0 +1,11 @@
+<div>
+    <h2><a href="add">添加用户</a></h2>
+    －－－－－－
+
+    <c:forEach items="${users}" var="um">
+        <p>账号：${um.value.username}  密码：${um.value.password} <a href="${um.key}">查看</a> | <a href="${um.key}/update">修改</a></p>
+    </c:forEach>
+    －－－－－－
+    <hr/>
+    ${message}
+</div>
