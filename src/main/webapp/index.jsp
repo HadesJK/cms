@@ -11,25 +11,26 @@
     <title>Free HTML5 Bootstrap Admin Template</title>
 
     <!-- The styles -->
-    <link id="bs-css" href="<%=basePath%>/charisma/css/bootstrap-cerulean.min.css" rel="stylesheet">
+    <%--<link id="bs-css" href="<%=basePath%>/charisma/css/bootstrap-cerulean.min.css" rel="stylesheet">--%>
+    <link href="<%=basePath%>/charisma/css/bootstrap-cerulean.min.css" rel="stylesheet">
 
-    <link href="<%=basePath%>/charismacss/charisma-app.css" rel="stylesheet">
-    <link href='<%=basePath%>/charismabower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
-    <link href='<%=basePath%>/charismabower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
-    <link href='<%=basePath%>/charismabower_components/chosen/chosen.min.css' rel='stylesheet'>
-    <link href='<%=basePath%>/charismabower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
-    <link href='<%=basePath%>/charismabower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
-    <link href='<%=basePath%>/charismabower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
-    <link href='<%=basePath%>/charismacss/jquery.noty.css' rel='stylesheet'>
-    <link href='<%=basePath%>/charismacss/noty_theme_default.css' rel='stylesheet'>
-    <link href='<%=basePath%>/charismacss/elfinder.min.css' rel='stylesheet'>
-    <link href='<%=basePath%>/charismacss/elfinder.theme.css' rel='stylesheet'>
-    <link href='<%=basePath%>/charismacss/jquery.iphone.toggle.css' rel='stylesheet'>
-    <link href='<%=basePath%>/charismacss/uploadify.css' rel='stylesheet'>
-    <link href='<%=basePath%>/charismacss/animate.min.css' rel='stylesheet'>
+    <link href="<%=basePath%>/charisma/css/charisma-app.css" rel="stylesheet">
+    <link href='<%=basePath%>/charisma/bower_components/fullcalendar/dist/fullcalendar.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charisma/bower_components/fullcalendar/dist/fullcalendar.print.css' rel='stylesheet' media='print'>
+    <link href='<%=basePath%>/charisma/bower_components/chosen/chosen.min.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charisma/bower_components/colorbox/example3/colorbox.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charisma/bower_components/responsive-tables/responsive-tables.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charisma/bower_components/bootstrap-tour/build/css/bootstrap-tour.min.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charisma/css/jquery.noty.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charisma/css/noty_theme_default.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charisma/css/elfinder.min.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charisma/css/elfinder.theme.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charisma/css/jquery.iphone.toggle.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charisma/css/uploadify.css' rel='stylesheet'>
+    <link href='<%=basePath%>/charisma/css/animate.min.css' rel='stylesheet'>
 
     <!-- jQuery -->
-    <script src="bower_components/jquery/jquery.min.js"></script>
+    <script src="<%=basePath%>/charisma/bower_components/jquery/jquery.min.js"></script>
 
     <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -37,7 +38,7 @@
     <![endif]-->
 
     <!-- The fav icon -->
-    <link rel="shortcut icon" href="<%=basePath%>/charismaimg/favicon.ico">
+    <link rel="shortcut icon" href="<%=basePath%>/charisma/img/favicon.ico">
 
 </head>
 
@@ -52,7 +53,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.html"> <img alt="Charisma Logo" src="img/logo20.png" class="hidden-xs"/>
+            <a class="navbar-brand" href="index.html"> <img alt="Charisma Logo" src="<%=basePath%>/charisma/img/logo20.png" class="hidden-xs"/>
                 <span>Charisma</span></a>
 
             <!-- user dropdown starts -->
@@ -1540,38 +1541,38 @@
 
 <!-- external javascript -->
 
-<script src="<%=basePath%>/charismabower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="<%=basePath%>/charisma/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- library for cookie management -->
-<script src="<%=basePath%>/charismajs/jquery.cookie.js"></script>
+<script src="<%=basePath%>/charisma/js/jquery.cookie.js"></script>
 <!-- calender plugin -->
-<script src='<%=basePath%>/charismabower_components/moment/min/moment.min.js'></script>
-<script src='<%=basePath%>/charismabower_components/fullcalendar/dist/fullcalendar.min.js'></script>
+<script src='<%=basePath%>/charisma/bower_components/moment/min/moment.min.js'></script>
+<script src='<%=basePath%>/charisma/bower_components/fullcalendar/dist/fullcalendar.min.js'></script>
 <!-- data table plugin -->
-<script src='<%=basePath%>/charismajs/jquery.dataTables.min.js'></script>
+<script src='<%=basePath%>/charisma/js/jquery.dataTables.min.js'></script>
 
 <!-- select or dropdown enhancer -->
-<script src="<%=basePath%>/charismabower_components/chosen/chosen.jquery.min.js"></script>
+<script src="<%=basePath%>/charisma/bower_components/chosen/chosen.jquery.min.js"></script>
 <!-- plugin for gallery image view -->
-<script src="<%=basePath%>/charismabower_components/colorbox/jquery.colorbox-min.js"></script>
+<script src="<%=basePath%>/charisma/bower_components/colorbox/jquery.colorbox-min.js"></script>
 <!-- notification plugin -->
-<script src="<%=basePath%>/charismajs/jquery.noty.js"></script>
+<script src="<%=basePath%>/charisma/js/jquery.noty.js"></script>
 <!-- library for making tables responsive -->
-<script src="<%=basePath%>/charismabower_components/responsive-tables/responsive-tables.js"></script>
+<script src="<%=basePath%>/charisma/bower_components/responsive-tables/responsive-tables.js"></script>
 <!-- tour plugin -->
-<script src="<%=basePath%>/charismabower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
+<script src="<%=basePath%>/charisma/bower_components/bootstrap-tour/build/js/bootstrap-tour.min.js"></script>
 <!-- star rating plugin -->
-<script src="<%=basePath%>/charismajs/jquery.raty.min.js"></script>
+<script src="<%=basePath%>/charisma/js/jquery.raty.min.js"></script>
 <!-- for iOS style toggle switch -->
-<script src="<%=basePath%>/charismajs/jquery.iphone.toggle.js"></script>
+<script src="<%=basePath%>/charisma/js/jquery.iphone.toggle.js"></script>
 <!-- autogrowing textarea plugin -->
-<script src="<%=basePath%>/charismajs/jquery.autogrow-textarea.js"></script>
+<script src="<%=basePath%>/charisma/js/jquery.autogrow-textarea.js"></script>
 <!-- multiple file upload plugin -->
-<script src="<%=basePath%>/charismajs/jquery.uploadify-3.1.min.js"></script>
+<script src="<%=basePath%>/charisma/js/jquery.uploadify-3.1.min.js"></script>
 <!-- history.js for cross-browser state change on ajax -->
-<script src="<%=basePath%>/charismajs/jquery.history.js"></script>
+<script src="<%=basePath%>/charisma/js/jquery.history.js"></script>
 <!-- application script for Charisma demo -->
-<script src="<%=basePath%>/charismajs/js/charisma.js"></script>
+<script src="<%=basePath%>/charisma/js/charisma.js"></script>
 
 
 </body>
