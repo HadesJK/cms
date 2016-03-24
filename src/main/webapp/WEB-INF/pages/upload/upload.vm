@@ -1,13 +1,21 @@
+#set($layout = "/velocity/layout/fileLayout.vm")
+
+<link href='uploadify/uploadify.css' rel='stylesheet'>
+<!-- jQuery -->
+<script src="jquery/jquery.min.js"></script>
+<script src="jquery/jquery.js"></script>
+<script src="uploadify/jquery.uploadify.min.js"></script>
+
 <script>
     $(document).ready(function () {
         $("#file_upload").uploadify({
             'buttonText': '请选择',
             'height': 30,
-            'swf': 'upload/uploadify.swf',
+            'swf': 'uploadify/uploadify.swf',
             'uploader': 'filesUpload',
             'width': 120,
             'auto': false,
-            'fileObjName': 'file',
+            'fileObjName': 'files',
             'onUploadSuccess': function (file, data, response) {
                 alert(file.name + ' 上传成功！ ');
             }
