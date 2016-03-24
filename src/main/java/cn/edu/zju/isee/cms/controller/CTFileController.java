@@ -31,26 +31,26 @@ public class CTFileController {
         return "upload/upload";
     }
 
-    //    @RequestMapping("filesUpload")
-//    public void upload(@RequestParam("files") MultipartFile[] files, Model model) {
-//        if (files != null && files.length > 0) {
-//            service.saveFiles(files);
-//        }
-//    }
-    @RequestMapping(method = RequestMethod.POST, value = "filesUpload")
-    public void upload(HttpServletRequest request) {
-        DiskFileItemFactory dff = new DiskFileItemFactory();
-        ServletFileUpload upload = new ServletFileUpload(dff);
-        upload.setHeaderEncoding("utf-8");
-        List fileList = null;
-        try {
-            fileList = upload.parseRequest(request);
-        } catch (FileUploadException e) {
-            e.printStackTrace();
+    @RequestMapping("filesUpload")
+    public void upload(@RequestParam("files") MultipartFile[] files, Model model) {
+        if (files != null && files.length > 0) {
+            service.saveFiles(files);
         }
-        if (fileList != null && fileList.size() > 0) {
-            System.out.println(fileList.size());
-        }
-        System.out.println(fileList.size());
     }
+//    @RequestMapping(method = RequestMethod.POST, value = "filesUpload")
+//    public void upload(HttpServletRequest request) {
+//        DiskFileItemFactory dff = new DiskFileItemFactory();
+//        ServletFileUpload upload = new ServletFileUpload(dff);
+//        upload.setHeaderEncoding("utf-8");
+//        List fileList = null;
+//        try {
+//            fileList = upload.parseRequest(request);
+//        } catch (FileUploadException e) {
+//            e.printStackTrace();
+//        }
+//        if (fileList != null && fileList.size() > 0) {
+//            System.out.println(fileList.size());
+//        }
+//        System.out.println(fileList.size());
+//    }
 }

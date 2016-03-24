@@ -50,7 +50,7 @@
             'buttonText': '浏览', 		//按钮文字
             'height': 30,				//按钮高度
             'width': 100,				//按钮宽度
-            'checkExisting': 'uploadify/check-exists.php',//是否检测图片存在,不检测:false
+//            'checkExisting': 'uploadify/check-exists.php',//是否检测图片存在,不检测:false
             'fileObjName': 'files',			 //默认 Filedata, _FILES控件名称
             'fileSizeLimit': '1MB',			 //文件大小限制 0为无限制 默认KB
             'fileTypeDesc': 'All Files',		 //图片选择描述
@@ -58,7 +58,7 @@
             'formData': {'someKey': 'someValue', 'someOtherKey': 1},//传输数据JSON格式
             //'overrideEvents': ['onUploadProgress'],  // The progress will not be updated
             //'progressData' : 'speed',				//默认percentage 进度显示方式
-            'queueID': 'queue',				//默认队列ID
+            'queueID': false,				//默认队列ID
             'queueSizeLimit': 20, 					//一个队列上传文件数限制
             'removeCompleted': false,				//完成时是否清除队列 默认true
             'removeTimeout': 3,					//完成时清除队列显示秒数,默认3秒
@@ -67,6 +67,7 @@
             'uploadLimit': 100,					//允许上传的最多张数
             'swf': 'uploadify/uploadify.swf', //swfUpload
             'uploader': 'filesUpload', //服务器端脚本
+            'multi' : true,
 
 
             //修改formData数据
