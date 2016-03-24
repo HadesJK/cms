@@ -6,9 +6,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>CT图像上传</title>
-    <link href='uploadify/uploadify.css' rel='stylesheet'>
-    <script src="jquery/jquery.min.js"></script>
-    <script src="uploadify/jquery.uploadify.min.js"></script>
+    <script src="${rc.contextPath}/jquery/jquery.min.js"></script>
+    <link href='${rc.contextPath}/uploadify/uploadify.css' rel='stylesheet'>
+    <script src="${rc.contextPath}/uploadify/jquery.uploadify.min.js"></script>
 
     <style type="text/css">
         body {
@@ -47,10 +47,10 @@
             'debug': false,
             'auto': false, 			//是否自动上传,
             'buttonClass': 'haha', 			//按钮辅助class
-            'buttonText': '上传图片', 		//按钮文字
+            'buttonText': '浏览', 		//按钮文字
             'height': 30,				//按钮高度
             'width': 100,				//按钮宽度
-            'checkExisting': 'check-exists.php',//是否检测图片存在,不检测:false
+            'checkExisting': 'uploadify/check-exists.php',//是否检测图片存在,不检测:false
             'fileObjName': 'files',			 //默认 Filedata, _FILES控件名称
             'fileSizeLimit': '1MB',			 //文件大小限制 0为无限制 默认KB
             'fileTypeDesc': 'All Files',		 //图片选择描述
@@ -60,7 +60,7 @@
             //'progressData' : 'speed',				//默认percentage 进度显示方式
             'queueID': 'queue',				//默认队列ID
             'queueSizeLimit': 20, 					//一个队列上传文件数限制
-            'removeCompleted': true,				//完成时是否清除队列 默认true
+            'removeCompleted': false,				//完成时是否清除队列 默认true
             'removeTimeout': 3,					//完成时清除队列显示秒数,默认3秒
             'requeueErrors': false,				//队列上传出错，是否继续回滚队列
             'successTimeout': 5,					//上传超时
@@ -123,12 +123,12 @@
 </script>
 <h4>操作:</h4>
 <a href="javascript:$('#file_upload').uploadify('upload', '*');">开始上传</a>  | 
-<a href="javascript:$('#file_upload').uploadify('cancel', '*');">清除队列</a>  | 
-<a href="javascript:$('#file_upload').uploadify('destroy');">销毁上传</a>  | 
-<a href="javascript:$('#file_upload').uploadify('disable', true);">禁用上传</a>  | 
-<a href="javascript:$('#file_upload').uploadify('disable', false);">激活上传</a>  | 
-<a href="javascript:$('#file_upload').uploadify('stop');">停止上传</a>  | 
-<a href="javascript:changeBtnText();">变换按钮</a>  | 
+<a href="javascript:$('#file_upload').uploadify('cancel', '*');">清除队列</a>
+##<a href="javascript:$('#file_upload').uploadify('destroy');">销毁上传</a>  | 
+##<a href="javascript:$('#file_upload').uploadify('disable', true);">禁用上传</a>  | 
+##<a href="javascript:$('#file_upload').uploadify('disable', false);">激活上传</a>  | 
+##<a href="javascript:$('#file_upload').uploadify('stop');">停止上传</a>  | 
+##<a href="javascript:changeBtnText();">变换按钮</a>  | 
 <h4>大小:</h4>
 
 <div id='progress'></div>
