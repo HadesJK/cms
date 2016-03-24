@@ -79,7 +79,8 @@ public class UserController {
     public String show(@PathVariable String username, Model model) {
         System.out.println("query user name:" + username);
         model.addAttribute("user", users.get(username));
-        return "user/details";
+//
+        return "ctList";
     }
 
     @RequestMapping(value = "/{username}/update", method = RequestMethod.GET)
