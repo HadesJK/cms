@@ -5,9 +5,18 @@ package cn.edu.zju.isee.cms.entity;
  */
 public class LungImgSlide {
     private int id;
-    private int slide_id;
+    private int ctId;
+    private int slideId;
     private String fileName;
     private String absolutePath;
+
+    public int getCtId() {
+        return ctId;
+    }
+
+    public void setCtId(int ctId) {
+        this.ctId = ctId;
+    }
 
     public int getId() {
         return id;
@@ -17,12 +26,12 @@ public class LungImgSlide {
         this.id = id;
     }
 
-    public int getSlide_id() {
-        return slide_id;
+    public int getSlideId() {
+        return slideId;
     }
 
-    public void setSlide_id(int slide_id) {
-        this.slide_id = slide_id;
+    public void setSlideId(int slideId) {
+        this.slideId = slideId;
     }
 
     public String getFileName() {

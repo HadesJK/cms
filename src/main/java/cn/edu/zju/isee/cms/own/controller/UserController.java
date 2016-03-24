@@ -1,10 +1,9 @@
-package com.jql.springmvc.controller;
+package cn.edu.zju.isee.cms.own.controller;
 
-import cn.edu.zju.isee.cms.dao.TestDao;
+import cn.edu.zju.isee.cms.mapper.TestDao;
 import cn.edu.zju.isee.cms.entity.Test;
-import com.jql.springmvc.pojo.Book;
-import com.jql.springmvc.pojo.User;
-import jdk.nashorn.internal.runtime.ECMAException;
+import cn.edu.zju.isee.cms.own.pojo.Book;
+import cn.edu.zju.isee.cms.own.pojo.User;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

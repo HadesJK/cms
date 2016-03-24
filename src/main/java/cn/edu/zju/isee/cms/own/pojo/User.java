@@ -1,4 +1,4 @@
-package com.jql.springmvc.pojo;
+package cn.edu.zju.isee.cms.own.pojo;
 
 import java.util.ArrayList;
 import java.util.List;

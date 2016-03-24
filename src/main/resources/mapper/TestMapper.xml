@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.edu.zju.isee.cms.dao.TestDao">
+<mapper namespace="cn.edu.zju.isee.cms.mapper.TestDao">
     <select id="getById" parameterType="int" resultType="cn.edu.zju.isee.cms.entity.Test" >
         SELECT * FROM test WHERE id=#{id}
     </select>

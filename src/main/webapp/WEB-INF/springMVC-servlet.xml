@@ -11,7 +11,7 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <context:component-scan base-package="com.jql.springmvc.controller;cn.edu.zju.isee.cms.controller"/>
+    <context:component-scan base-package="cn.edu.zju.isee.cms"/>
     <mvc:annotation-driven/>
 
 
@@ -77,7 +77,7 @@
     </bean>
     <!-- spring与mybatis整合配置，扫描所有dao -->
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer" >
-        <property name="basePackage" value="cn.edu.zju.isee.cms.dao" />
+        <property name="basePackage" value="cn.edu.zju.isee.cms.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
 

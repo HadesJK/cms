@@ -1,4 +1,4 @@
-package cn.edu.zju.isee.cms.dao;
+package cn.edu.zju.isee.cms.mapper;
 
 import cn.edu.zju.isee.cms.entity.Test;
 import org.springframework.stereotype.Component;
