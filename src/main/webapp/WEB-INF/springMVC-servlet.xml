@@ -11,7 +11,7 @@
        http://www.springframework.org/schema/mvc
        http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
 
-    <context:component-scan base-package="com.jql.springmvc.controller"/>
+    <context:component-scan base-package="com.jql.springmvc.controller;cn.edu.zju.isee.cms.controller"/>
     <mvc:annotation-driven/>
 
 
@@ -51,6 +51,7 @@
     <!--静态资源不拦截-->
     <mvc:resources location="/adminlte/" mapping="/adminlte/**"/>
     <mvc:resources location="/charisma/" mapping="/charisma/**"/>
+    <mvc:resources location="/uploadify/" mapping="/uploadify/**"/>
 
     <!-- 引入jdbc配置文件 -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
