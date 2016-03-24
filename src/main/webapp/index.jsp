@@ -32,11 +32,6 @@
     <!-- jQuery -->
     <script src="<%=basePath%>/charisma/bower_components/jquery/jquery.min.js"></script>
 
-    <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
     <!-- The fav icon -->
     <link rel="shortcut icon" href="<%=basePath%>/charisma/img/favicon.ico">
 

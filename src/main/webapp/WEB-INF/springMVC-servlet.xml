@@ -49,9 +49,10 @@
     </bean>
 
     <!--静态资源不拦截-->
-    <mvc:resources location="/adminlte/" mapping="/adminlte/**"/>
+    <mvc:resources location="/jquery/" mapping="/jquery/**"/>
     <mvc:resources location="/charisma/" mapping="/charisma/**"/>
     <mvc:resources location="/uploadify/" mapping="/uploadify/**"/>
+
 
     <!-- 引入jdbc配置文件 -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

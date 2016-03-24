@@ -33,6 +33,11 @@
     <!-- The fav icon -->
     <link rel="shortcut icon" href="${rc.contextPath}/charisma/img/favicon.ico">
 
+    <link rel="stylesheet" type="text/css" href="${rc.contextPath}/uploadify/uploadify.css">
+    <script type="text/javascript" src="${rc.contextPath}/uploadify/jquery.uploadify.min.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="${rc.contextPath}/jquery/jquery.js"></script>
+
 </head>
 
 <body>

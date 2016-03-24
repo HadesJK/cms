@@ -1,60 +1,20 @@
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("#uploadify").uploadify({
-            'uploader'       : 'uploadify/scripts/uploadify.swf',
-            'script'         : 'UploadPhotoServlet',
-            'cancelImg'      : 'uploadify/cancel.png',
-            'buttonImg'      : 'uploadify/buttonImg.png',
-            'folder'         : '/jxdBlog/photos',
-            'queueID'        : 'fileQueue',
-            'auto'           : false,
-            'multi'          : true,
-            'wmode'          : 'transparent',
-            'simUploadLimit' : 999,
-            'fileExt'        : '*.png;*.gif;*.jpg;*.bmp;*.jpeg',
-            'fileDesc'       : '图片文件(*.png;*.gif;*.jpg;*.bmp;*.jpeg)',
-            'onAllComplete'  :function(event,data)
-            {
-                $('#result').html(data.filesUploaded +'个图片上传成功');
+<script>
+    $(document).ready(function () {
+        $("#file_upload").uploadify({
+            'buttonText': '请选择',
+            'height': 30,
+            'swf': 'upload/uploadify.swf',
+            'uploader': 'filesUpload',
+            'width': 120,
+            'auto': false,
+            'fileObjName': 'file',
+            'onUploadSuccess': function (file, data, response) {
+                alert(file.name + ' 上传成功！ ');
             }
         });
     });
 </script>
-<style type="text/css">
-    .inputcss
-    {
-        color:#333333;
-        font-family: "Tahoma";
-        font-size: 12px;
-        border:solid 1px #CCCCCC;
-    }
-    .buttoncss
-    {
-        color:#333333;
-        font-family: "Tahoma";
-        font-size: 12px;
-        background-color:#FFFFFF;
-        border:solid 1px #CCCCCC;
-    }
-</style>
-<table style="width: 90%;">
-    <tr>
-        <td style="width: 100px;">
-            <input type="file" name="uploadify" id="uploadify" />
-        </td>
-        <td align="left">
-            <a href="javascript:$('#uploadify').uploadifyUpload()">开始上传</a>|
-            <a href="javascript:jQuery('#uploadify').uploadifyClearQueue()">取消上传</a>
-            <span id="result" style="font-size: 13px;color: red"></span>
-        </td>
-    </tr>
-</table>
-<div id="fileQueue" style="width: 400px;height: 300px; border: 2px solid green;"></div>
 
-<hr/>
-
-<h2>CT图像上传</h2>
-<form action="filesUpload" method="post" enctype="multipart/form-data">
-    选择文件:<input type="file" name="fileName">
-    <input type="submit" value="提交">
-</form>
+<input type="file" name="fileName" id="file_upload"/>
+<a href="javascript:$('#file_upload').uploadify('upload', '*')">上传文件</a> | <a
+        href="javascript:$('#file_upload').uploadify('stop')">停止上传!</a>
