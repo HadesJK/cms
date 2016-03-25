@@ -28,7 +28,7 @@ public class LungImgSlideService {
                 // 1. 保存上传的zip数据
                 FileUtils.saveFile(file.getInputStream(), GlobalConstant.ZIP_ZHEYI_LUNG, name);
                 // 2. 解压zip数据成dicom
-//                String newName = ZipUtils.unzip(GlobalConstant.ZIP_ZHEYI_LUNG + name, GlobalConstant.DICOM_ZHEYI_LUNG);
+                String newName = ZipUtils.unzip(GlobalConstant.ZIP_ZHEYI_LUNG + name, GlobalConstant.DICOM_ZHEYI_LUNG);
                 // 3. 将dicom输出转成jpg
                 // TODO: @hades
                 // 4. 将记录插入到数据库中
