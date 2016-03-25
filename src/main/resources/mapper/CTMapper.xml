@@ -16,11 +16,11 @@
         id, slideNum, buildTime, baseDir, patientName, doctors, descr, hospital, item
     </sql>
 
-    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="cn.edu.zju.isee.cms.entity.CT" >
+    <insert id="insert" parameterType="cn.edu.zju.isee.cms.entity.CT" useGeneratedKeys="true" keyProperty="id" >
         insert into ct        <trim prefix="(" suffix=")" suffixOverrides="," >
-            <if test="id != null" >
-                id,
-            </if>
+            <!--<if test="id != null" >-->
+                <!--id,-->
+            <!--</if>-->
             <if test="slideNum != null" >
                 slideNum,
             </if>
@@ -47,9 +47,9 @@
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
-            <if test="id != null" >
-                #{id,jdbcType=INTEGER},
-            </if>
+            <!--<if test="id != null" >-->
+                <!--#{id,jdbcType=INTEGER},-->
+            <!--</if>-->
             <if test="slideNum != null" >
                 #{slideNum,jdbcType=INTEGER},
             </if>
@@ -77,6 +77,10 @@
 
         </trim>
     </insert>
+
+    <select id="selectById" resultType="cn.edu.zju.isee.cms.entity.CT">
+        SELECT * FROM ct
+    </select>
 
     <!--<insert id="insert" parameterType="cn.edu.zju.isee.cms.entity.CT" useGeneratedKeys="true" keyProperty="id">-->
         <!--insert into ct (slideNum, buildTime, baseDir, patientName, doctors, descr)-->

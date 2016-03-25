@@ -32,12 +32,13 @@ public class DBTest {
         ct.setDescr("test");
         ct.setDoctors("test");
         ct.setHospital("test");
-        ct.setId(123);
+//        ct.setId(124);
         ct.setItem("test");
         ct.setPatientName("test");
         ct.setSlideNum(123);
 //        System.out.println(applicationContext.toString());
         CTMapper ctMapper = applicationContext.getBean(CTMapper.class);
         System.out.println(ctMapper.insert(ct));
+        System.out.println(ct.getId());
     }
 }
