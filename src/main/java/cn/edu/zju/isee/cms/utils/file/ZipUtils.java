@@ -90,7 +90,7 @@ public class ZipUtils {
                 }
             }
             int max = Arrays.stream(num).max().getAsInt();
-            newName = max + 1 + "";
+            newName = max + 1 + File.separator;
         }
         ZipInputStream zin = new ZipInputStream(new FileInputStream(zipFileName));
         BufferedInputStream bin = new BufferedInputStream(zin);
@@ -100,7 +100,7 @@ public class ZipUtils {
             if (entry.isDirectory()) {
                 //TODO:
             } else {
-                fileOut = new File(to + newName + File.separator, entry.getName());
+                fileOut = new File(to + newName, entry.getName());
                 if (!fileOut.getParentFile().exists()) {
                     fileOut.getParentFile().mkdirs();
                 }
