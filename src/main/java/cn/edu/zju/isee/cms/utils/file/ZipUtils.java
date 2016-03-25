@@ -5,8 +5,9 @@ import org.apache.tools.ant.taskdefs.Zip;
 import org.apache.tools.ant.types.FileSet;
 
 import java.io.*;
-import java.util.Arrays;
-import java.util.zip.*;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
+import java.util.zip.ZipOutputStream;
 
 /**
  * Created by jql on 2016/3/25.
@@ -66,31 +67,9 @@ public class ZipUtils {
      * @return 新建一个文件夹newName，来存放zip解压后的数据
      * @throws IOException
      */
-    public static String unzip(String zipFileName, String to) throws IOException {
+    public static void unzip(String zipFileName, String to) throws IOException {
         if (!zipFileName.endsWith(".zip")) {
             throw new IllegalArgumentException("file not end with .zip");
-        }
-        String newName = "";
-        File file = new File(to);
-        if (!file.exists()) {
-            file.mkdirs();
-        } else if (!file.isDirectory()) {
-            throw new IllegalArgumentException("path " + to + " is not a directory.");
-        }
-        File[] list = file.listFiles();
-        if (list == null || list.length == 0) {
-            newName = "1";
-        } else {
-            int[] num = new int[list.length];
-            for (int i = 0; i < num.length; i ++) {
-                try {
-                    num[i] = Integer.parseInt(list[i].getName());
-                } catch (Exception e) {
-                    // nothing to do
-                }
-            }
-            int max = Arrays.stream(num).max().getAsInt();
-            newName = max + 1 + File.separator;
         }
         ZipInputStream zin = new ZipInputStream(new FileInputStream(zipFileName));
         BufferedInputStream bin = new BufferedInputStream(zin);
@@ -100,7 +79,7 @@ public class ZipUtils {
             if (entry.isDirectory()) {
                 //TODO:
             } else {
-                fileOut = new File(to + newName, entry.getName());
+                fileOut = new File(to, entry.getName());
                 if (!fileOut.getParentFile().exists()) {
                     fileOut.getParentFile().mkdirs();
                 }
@@ -115,7 +94,6 @@ public class ZipUtils {
         }
         bin.close();
         zin.close();
-        return newName;
     }
 
     public static void zip(String from, String to) {

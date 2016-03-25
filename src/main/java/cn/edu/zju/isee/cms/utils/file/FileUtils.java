@@ -21,7 +21,7 @@ public class FileUtils {
         String newName = null;
         File[] list = file.listFiles();
         if (list == null || list.length == 0) {
-            newName = "1";
+            newName = "1" + File.separator;
         } else {
             int[] num = new int[list.length];
             for (int i = 0; i < num.length; i ++) {
@@ -32,7 +32,8 @@ public class FileUtils {
                 }
             }
             int max = Arrays.stream(num).max().getAsInt();
-            newName = max + 1 + File.separator;
+            max = max + 1;
+            newName = max + File.separator;
         }
 
         org.apache.commons.io.FileUtils.copyInputStreamToFile(in, new File(toPath + newName + name));
