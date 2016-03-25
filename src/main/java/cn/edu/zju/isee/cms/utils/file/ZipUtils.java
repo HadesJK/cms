@@ -59,6 +59,9 @@ public class ZipUtils {
     }
 
     public static void unzip(String zipFileName, String to) throws IOException {
+        if (!zipFileName.endsWith(".zip")) {
+            throw new IllegalArgumentException("file not end with .zip");
+        }
         ZipInputStream zin = new ZipInputStream(new FileInputStream(zipFileName));
         BufferedInputStream bin = new BufferedInputStream(zin);
         File fileOut;

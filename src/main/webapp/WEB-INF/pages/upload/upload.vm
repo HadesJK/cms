@@ -72,10 +72,13 @@
 
             //修改formData数据
             'onUploadStart': function (file) {
-//                var mDate = new Date();
-//                var millisecond = mDate.getMilliseconds();
-//                $("#file_upload").uploadify("settings", "someOtherKey", millisecond);
-            },
+                var name=$('#username').val();
+                var age=$('#age').val();
+                $("#file_upload").uploadify(
+                        "settings",
+                        "formData",
+                        {'user.username':name,'user.age':age}
+                )},
             //删除时触发
             'onCancel': function (file) {
                 //alert('The file ' + file.name + '--' + file.size + ' was cancelled.');
@@ -98,7 +101,7 @@
             },
             //上传错误
             'onUploadError': function (file, errorCode, errorMsg, errorString) {
-                //alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+                alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
             },
             //上传汇总
             'onUploadProgress': function (file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
@@ -106,7 +109,7 @@
             },
             //上传完成
             'onUploadComplete': function (file) {
-                //alert('The file ' + file.name + ' finished processing.');
+                alert('wahha The file ' + file.name + ' finished processing.');
             },
 
         });
@@ -147,31 +150,3 @@
 <div id='progress'></div>
 </body>
 </html>
-###set($layout = "/velocity/layout/fileLayout.vm")
-##
-##<link href='uploadify/uploadify.css' rel='stylesheet'>
-##<!-- jQuery -->
-##<script src="jquery/jquery.min.js"></script>
-##<script src="jquery/jquery.js"></script>
-##<script src="uploadify/jquery.uploadify.min.js"></script>
-##
-##<script>
-##    $(document).ready(function () {
-##        $("#file_upload").uploadify({
-##            'buttonText': '请选择',
-##            'height': 30,
-##            'swf': 'uploadify/uploadify.swf',
-##            'uploader': 'filesUpload',
-##            'width': 120,
-##            'auto': false,
-##            'fileObjName': 'files',
-##            'onUploadSuccess': function (file, data, response) {
-##                alert(file.name + ' 上传成功！ ');
-##            }
-##        });
-##    });
-##</script>
-##
-##<input type="file" name="fileName" id="file_upload"/>
-##<a href="javascript:$('#file_upload').uploadify('upload', '*')">上传文件</a> | <a
-##        href="javascript:$('#file_upload').uploadify('stop')">停止上传!</a>

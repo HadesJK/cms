@@ -1,7 +1,5 @@
 package cn.edu.zju.isee.cms.own.controller;
 
-import cn.edu.zju.isee.cms.mapper.TestDao;
-import cn.edu.zju.isee.cms.entity.Test;
 import cn.edu.zju.isee.cms.own.pojo.Book;
 import cn.edu.zju.isee.cms.own.pojo.User;
 import org.apache.commons.io.FileUtils;
@@ -13,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
@@ -32,8 +29,8 @@ import java.util.concurrent.ConcurrentMap;
 public class UserController {
     private ConcurrentMap<String, User> users = new ConcurrentHashMap<String, User>(8);
 
-    @Resource
-    private TestDao dao;
+//    @Resource
+//    private TestDao dao;
 
     public UserController() {
         users.putIfAbsent("jql", new User("jql", "lqj"));
@@ -42,7 +39,7 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String list(Model model) {
-        Test entity = dao.getById(1);
+//        Test entity = dao.getById(1);
         User x = new User("x", "ql");
         List<Book> books = x.getBooks();
         for (int i =0; i < 6; i ++) {

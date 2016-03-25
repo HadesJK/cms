@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.zju.isee.cms.mapper.CTMapper" >
+    <resultMap id="BaseResultMap" type="cn.edu.zju.isee.cms.entity.CT" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="slideNum" property="slideNum" jdbcType="INTEGER" />
+        <result column="buildTime" property="buildTime" jdbcType="TIMESTAMP" />
+        <result column="baseDir" property="baseDir" jdbcType="VARCHAR" />
+        <result column="patientName" property="patientName" jdbcType="VARCHAR" />
+        <result column="doctors" property="doctors" jdbcType="VARCHAR" />
+        <result column="descr" property="descr" jdbcType="VARCHAR" />
+        <result column="hospital" property="hospital" jdbcType="VARCHAR" />
+        <result column="item" property="item" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, slideNum, buildTime, baseDir, patientName, doctors, descr, hospital, item
+    </sql>
+
+    <insert id="insert" parameterType="cn.edu.zju.isee.cms.entity.CT" >
+        insert into ct        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="slidenum != null" >
+                slideNum,
+            </if>
+            <if test="buildtime != null" >
+                buildTime,
+            </if>
+            <if test="basedir != null" >
+                baseDir,
+            </if>
+            <if test="patientname != null" >
+                patientName,
+            </if>
+            <if test="doctors != null" >
+                doctors,
+            </if>
+            <if test="descr != null" >
+                descr,
+            </if>
+            <if test="hospital != null" >
+                descr,
+            </if>
+            <if test="item != null" >
+                descr,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="id != null" >
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="slidenum != null" >
+                #{slidenum,jdbcType=INTEGER},
+            </if>
+            <if test="buildtime != null" >
+                #{buildtime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="basedir != null" >
+                #{basedir,jdbcType=VARCHAR},
+            </if>
+            <if test="patientname != null" >
+                #{patientname,jdbcType=VARCHAR},
+            </if>
+            <if test="doctors != null" >
+                #{doctors,jdbcType=VARCHAR},
+            </if>
+            <if test="descr != null" >
+                #{descr,jdbcType=VARCHAR},
+            </if>
+            <if test="descr != null" >
+                #{hospital,jdbcType=VARCHAR},
+            </if>
+            <if test="descr != null" >
+                #{item,jdbcType=VARCHAR},
+            </if>
+
+        </trim>
+    </insert>
+
+    <!--<insert id="insert" parameterType="cn.edu.zju.isee.cms.entity.CT" useGeneratedKeys="true" keyProperty="id">-->
+        <!--insert into ct (slideNum, buildTime, baseDir, patientName, doctors, descr)-->
+        <!--values ( #{slideId,jdbcType=INTEGER}, #{fileName,jdbcType=VARCHAR},#{absolutePath,jdbcType=VARCHAR})-->
+    <!--</insert>-->
+
+    <!--<select id="selectBySlideId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
+        <!--select * from lung_img-->
+        <!--where slideId = #{slideId,jdbcType=INTEGER}-->
+    <!--</select>-->
+
+    <!--<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
+        <!--select * from lung_img-->
+        <!--where id = #{id,jdbcType=INTEGER}-->
+    <!--</select>-->
+
+</mapper>

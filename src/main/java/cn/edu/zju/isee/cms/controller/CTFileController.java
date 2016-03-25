@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -33,12 +34,15 @@ public class CTFileController {
         return "upload/upload";
     }
 
-//    @RequestMapping("filesUpload")
-//    public void upload(@RequestParam("files") MultipartFile[] files, Model model) {
-//        if (files != null && files.length > 0) {
-//            service.saveFiles(files);
-//        }
-//    }
+    @RequestMapping(value = "filesUpload", produces = "text/html;")
+    @ResponseBody
+    public String upload(@RequestParam("files") MultipartFile[] files, Model model) {
+        if (files != null && files.length > 0) {
+            service.saveFiles(files);
+        }
+        return "husky";
+    }
+
 //    @RequestMapping(method = RequestMethod.POST, value = "filesUpload")
 //    public void upload(HttpServletRequest request) {
 //        DiskFileItemFactory dff = new DiskFileItemFactory();
@@ -55,11 +59,11 @@ public class CTFileController {
 //        }
 //        System.out.println(fileList.size());
 //    }
-    @RequestMapping(method = RequestMethod.POST, value = "filesUpload")
-    public void upload(HttpServletRequest request) {
-        MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-        Map<String, MultipartFile> fileMap = multiRequest.getFileMap();
-        System.out.println(fileMap.size());
-
-    }
+//    @RequestMapping(method = RequestMethod.POST, value = "filesUpload")
+//    public void upload(HttpServletRequest request) {
+//        MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+//        Map<String, MultipartFile> fileMap = multiRequest.getFileMap();
+//        System.out.println(fileMap.size());
+//
+//    }
 }
