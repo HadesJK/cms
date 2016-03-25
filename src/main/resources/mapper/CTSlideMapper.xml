@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.zju.isee.cms.mapper.CTSlideMapper" >
+    <resultMap id="BaseResultMap" type="cn.edu.zju.isee.cms.entity.CTSlide" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="ctId" property="ctId" jdbcType="INTEGER" />
+        <result column="serialNum" property="serialNum" jdbcType="INTEGER" />
+        <result column="slideName" property="slideName" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, ctId, serialNum, slideName
+    </sql>
+
+    <insert id="insert" parameterType="cn.edu.zju.isee.cms.entity.CTSlide" useGeneratedKeys="true" keyProperty="id" >
+        insert into ct_slide     <trim prefix="(" suffix=")" suffixOverrides="," >
+        <!--<if test="id != null" >-->
+        <!--id,-->
+        <!--</if>-->
+        <if test="ctId != null" >
+            ctId,
+        </if>
+        <if test="serialNum != null" >
+            serialNum,
+        </if>
+        <if test="slideName != null" >
+            slideName,
+        </if>
+    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <!--<if test="id != null" >-->
+            <!--#{id,jdbcType=INTEGER},-->
+            <!--</if>-->
+            <if test="ctId != null" >
+                #{ctId,jdbcType=INTEGER},
+            </if>
+            <if test="serialNum != null" >
+                #{serialNum,jdbcType=TIMESTAMP},
+            </if>
+            <if test="slideName != null" >
+                #{slideName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <!--<select id="selectById" resultType="cn.edu.zju.isee.cms.entity.CT" parameterType="java.lang.Integer">-->
+        <!--SELECT * FROM ct WHERE id = #{id,jdbcType=INTEGER}-->
+    <!--</select>-->
+
+    <!--<select id="selectAllIds" resultType="java.lang.Integer">-->
+        <!--SELECT id FROM ct-->
+    <!--</select>-->
+
+    <!--<update id="updateById" parameterType="cn.edu.zju.isee.cms.entity.CT">-->
+        <!--UPDATE ct SET-->
+        <!--&lt;!&ndash;<if test="id != null" >&ndash;&gt;-->
+        <!--&lt;!&ndash;id,&ndash;&gt;-->
+        <!--&lt;!&ndash;</if>&ndash;&gt;-->
+        <!--<if test="slideNum != null" >-->
+            <!--slideNum = #{slideNum,jdbcType=INTEGER},-->
+        <!--</if>-->
+        <!--<if test="buildTime != null" >-->
+            <!--buildTime = #{buildTime,jdbcType=TIMESTAMP},-->
+        <!--</if>-->
+        <!--<if test="baseDir != null" >-->
+            <!--baseDir = #{baseDir,jdbcType=VARCHAR},-->
+        <!--</if>-->
+        <!--<if test="patientName != null" >-->
+            <!--patientName = #{patientName,jdbcType=VARCHAR},-->
+        <!--</if>-->
+        <!--<if test="doctors != null" >-->
+            <!--doctors = #{doctors,jdbcType=VARCHAR},-->
+        <!--</if>-->
+        <!--<if test="descr != null" >-->
+            <!--descr = #{descr,jdbcType=VARCHAR},-->
+        <!--</if>-->
+        <!--<if test="hospital != null" >-->
+            <!--hospital = #{hospital,jdbcType=VARCHAR},-->
+        <!--</if>-->
+        <!--<if test="item != null" >-->
+            <!--item = #{item,jdbcType=VARCHAR}-->
+        <!--</if>-->
+        <!--<if test="id != null" >-->
+            <!--WHERE id = #{id,jdbcType=INTEGER}-->
+        <!--</if>-->
+
+    <!--</update>-->
+
+    <!--<insert id="insert" parameterType="cn.edu.zju.isee.cms.entity.CT" useGeneratedKeys="true" keyProperty="id">-->
+    <!--insert into ct (slideNum, buildTime, baseDir, patientName, doctors, descr)-->
+    <!--values ( #{slideId,jdbcType=INTEGER}, #{fileName,jdbcType=VARCHAR},#{absolutePath,jdbcType=VARCHAR})-->
+    <!--</insert>-->
+
+    <!--<select id="selectBySlideId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
+    <!--select * from lung_img-->
+    <!--where slideId = #{slideId,jdbcType=INTEGER}-->
+    <!--</select>-->
+
+    <!--<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
+    <!--select * from lung_img-->
+    <!--where id = #{id,jdbcType=INTEGER}-->
+    <!--</select>-->
+
+</mapper>

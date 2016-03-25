@@ -12,9 +12,9 @@ public interface CTMapper {
 
     int insert(CT ct);
 
-    List<Integer> selsctAllIds();
+    List<Integer> selectAllIds();
 
     List<CT> selectById(int id);
 
-    void updateById(int id);
+    void updateById(CT ct);
 }

@@ -78,9 +78,48 @@
         </trim>
     </insert>
 
-    <select id="selectById" resultType="cn.edu.zju.isee.cms.entity.CT">
-        SELECT * FROM ct
+    <select id="selectById" resultType="cn.edu.zju.isee.cms.entity.CT" parameterType="java.lang.Integer">
+        SELECT * FROM ct WHERE id = #{id,jdbcType=INTEGER}
     </select>
+
+    <select id="selectAllIds" resultType="java.lang.Integer">
+        SELECT id FROM ct
+    </select>
+
+    <update id="updateById" parameterType="cn.edu.zju.isee.cms.entity.CT">
+        UPDATE ct SET
+        <!--<if test="id != null" >-->
+        <!--id,-->
+        <!--</if>-->
+        <if test="slideNum != null" >
+            slideNum = #{slideNum,jdbcType=INTEGER},
+        </if>
+        <if test="buildTime != null" >
+            buildTime = #{buildTime,jdbcType=TIMESTAMP},
+        </if>
+        <if test="baseDir != null" >
+            baseDir = #{baseDir,jdbcType=VARCHAR},
+        </if>
+        <if test="patientName != null" >
+            patientName = #{patientName,jdbcType=VARCHAR},
+        </if>
+        <if test="doctors != null" >
+            doctors = #{doctors,jdbcType=VARCHAR},
+        </if>
+        <if test="descr != null" >
+            descr = #{descr,jdbcType=VARCHAR},
+        </if>
+        <if test="hospital != null" >
+            hospital = #{hospital,jdbcType=VARCHAR},
+        </if>
+        <if test="item != null" >
+            item = #{item,jdbcType=VARCHAR}
+        </if>
+        <if test="id != null" >
+        WHERE id = #{id,jdbcType=INTEGER}
+        </if>
+
+    </update>
 
     <!--<insert id="insert" parameterType="cn.edu.zju.isee.cms.entity.CT" useGeneratedKeys="true" keyProperty="id">-->
         <!--insert into ct (slideNum, buildTime, baseDir, patientName, doctors, descr)-->
