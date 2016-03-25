@@ -16,21 +16,21 @@
         id, slideNum, buildTime, baseDir, patientName, doctors, descr, hospital, item
     </sql>
 
-    <insert id="insert" parameterType="cn.edu.zju.isee.cms.entity.CT" >
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="cn.edu.zju.isee.cms.entity.CT" >
         insert into ct        <trim prefix="(" suffix=")" suffixOverrides="," >
             <if test="id != null" >
                 id,
             </if>
-            <if test="slidenum != null" >
+            <if test="slideNum != null" >
                 slideNum,
             </if>
-            <if test="buildtime != null" >
+            <if test="buildTime != null" >
                 buildTime,
             </if>
-            <if test="basedir != null" >
+            <if test="baseDir != null" >
                 baseDir,
             </if>
-            <if test="patientname != null" >
+            <if test="patientName != null" >
                 patientName,
             </if>
             <if test="doctors != null" >
@@ -40,27 +40,27 @@
                 descr,
             </if>
             <if test="hospital != null" >
-                descr,
+                hospital,
             </if>
             <if test="item != null" >
-                descr,
+                item,
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides="," >
             <if test="id != null" >
                 #{id,jdbcType=INTEGER},
             </if>
-            <if test="slidenum != null" >
-                #{slidenum,jdbcType=INTEGER},
+            <if test="slideNum != null" >
+                #{slideNum,jdbcType=INTEGER},
             </if>
-            <if test="buildtime != null" >
-                #{buildtime,jdbcType=TIMESTAMP},
+            <if test="buildTime != null" >
+                #{buildTime,jdbcType=TIMESTAMP},
             </if>
-            <if test="basedir != null" >
-                #{basedir,jdbcType=VARCHAR},
+            <if test="baseDir != null" >
+                #{baseDir,jdbcType=VARCHAR},
             </if>
-            <if test="patientname != null" >
-                #{patientname,jdbcType=VARCHAR},
+            <if test="patientName != null" >
+                #{patientName,jdbcType=VARCHAR},
             </if>
             <if test="doctors != null" >
                 #{doctors,jdbcType=VARCHAR},
@@ -68,10 +68,10 @@
             <if test="descr != null" >
                 #{descr,jdbcType=VARCHAR},
             </if>
-            <if test="descr != null" >
+            <if test="hospital != null" >
                 #{hospital,jdbcType=VARCHAR},
             </if>
-            <if test="descr != null" >
+            <if test="item != null" >
                 #{item,jdbcType=VARCHAR},
             </if>
 
