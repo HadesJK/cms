@@ -37,6 +37,7 @@ public class CTFileController {
     @RequestMapping(value = "filesUpload", produces = "text/html;")
     @ResponseBody
     public String upload(@RequestParam("files") MultipartFile[] files, Model model) {
+        System.out.println(files.length);
         if (files != null && files.length > 0) {
             service.saveFiles(files);
         }

@@ -97,11 +97,11 @@
             },
             //上传成功
             'onUploadSuccess': function (file, data, response) {
-                //alert(file.name + ' | ' + response + ':' + data);
+                alert("***************" + file.name + ' | ' + response + ':' + data);
             },
             //上传错误
             'onUploadError': function (file, errorCode, errorMsg, errorString) {
-                alert('The file ' + file.name + ' could not be uploaded: ' + errorString);
+                alert('error  @@@@@@@@@@@@@ The file ' + file.name + ' could not be uploaded: ' + errorString);
             },
             //上传汇总
             'onUploadProgress': function (file, bytesUploaded, bytesTotal, totalBytesUploaded, totalBytesTotal) {
