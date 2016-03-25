@@ -33,7 +33,8 @@ public class LungImgSlideService {
                 // TODO: @hades
                 // 4. 将记录插入到数据库中
                 File parentDir = new File(GlobalConstant.DICOM_ZHEYI_LUNG  + dir);
-                List<String> dcmNameList = getDcmNameList(parentDir);
+                List<String> dcmNameList = new ArrayList<>();
+//                getDcmNameList(parentDir, dcmNameList);
 
 
 //                int dcms = parent.listFiles().length;
@@ -51,8 +52,13 @@ public class LungImgSlideService {
             }
         }
     }
-    private List<String> getDcmNameList(File file) {
+    private List<String> getDcmNameList(File file, List list) {
         List<String> nameList = new ArrayList<>();
+        if (file.isDirectory()) {
+
+        } else if (file.isFile()) {
+            nameList.add(file.getName());
+        }
         return nameList;
     }
 
