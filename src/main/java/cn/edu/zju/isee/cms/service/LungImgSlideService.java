@@ -1,7 +1,6 @@
 package cn.edu.zju.isee.cms.service;
 
 import cn.edu.zju.isee.cms.GlobalConstant;
-import cn.edu.zju.isee.cms.entity.CT;
 import cn.edu.zju.isee.cms.mapper.CTMapper;
 import cn.edu.zju.isee.cms.utils.file.FileUtils;
 import cn.edu.zju.isee.cms.utils.file.ZipUtils;
@@ -11,7 +10,8 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jql on 2016/3/24.
@@ -26,13 +26,17 @@ public class LungImgSlideService {
             String name = file.getOriginalFilename();
             try {
                 // 1. 保存上传的zip数据
-                String newName = FileUtils.saveFile(file.getInputStream(), GlobalConstant.ZIP_ZHEYI_LUNG, name);
+                String dir = FileUtils.saveFile(file.getInputStream(), GlobalConstant.ZIP_ZHEYI_LUNG, name);
                 // 2. 解压zip数据成dicom
-//                ZipUtils.unzip(GlobalConstant.ZIP_ZHEYI_LUNG + name, GlobalConstant.DICOM_ZHEYI_LUNG);
+                ZipUtils.unzip(GlobalConstant.ZIP_ZHEYI_LUNG + dir + name, GlobalConstant.DICOM_ZHEYI_LUNG + dir);
                 // 3. 将dicom输出转成jpg
                 // TODO: @hades
                 // 4. 将记录插入到数据库中
-//                File parent = new File(GlobalConstant.DICOM_ZHEYI_LUNG + newName + File.separator + name);
+                File parentDir = new File(GlobalConstant.DICOM_ZHEYI_LUNG  + dir);
+                List<String> nameList = new ArrayList<>();
+                getDcmNameList(parentDir, "", nameList);
+
+
 //                int dcms = parent.listFiles().length;
 //
 //                CT ct = new CT();
@@ -49,5 +53,22 @@ public class LungImgSlideService {
         }
     }
 
+    private void getDcmNameList(File dir, String parentPath, List<String> nameList) {
+        asserDirectory(dir);
+        File[] files = dir.listFiles();
+        for (File file : files) {
+            if (file.isDirectory()) {
+                getDcmNameList(file, parentPath + File.separator + file.getName(), nameList);
+            } else if (file.isFile()) {
+                nameList.add(parentPath + file.getName());
+            }
+        }
+    }
+
+    private void asserDirectory(File file) {
+        if (!file.isDirectory()) {
+            throw new IllegalArgumentException(file.getName() + " is not a directory.");
+        }
+    }
 
 }
