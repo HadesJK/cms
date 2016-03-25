@@ -11,7 +11,7 @@ public class CT {
     private Date buildTime;
     private String baseDir;
     private String patientName;
-    private String doctor;
+    private String doctors;
     private String descr;
     private String hospital;
     private String item;
@@ -56,12 +56,12 @@ public class CT {
         this.patientName = patientName;
     }
 
-    public String getDoctor() {
-        return doctor;
+    public String getDoctors() {
+        return doctors;
     }
 
-    public void setDoctor(String doctor) {
-        this.doctor = doctor;
+    public void setDoctors(String doctors) {
+        this.doctors = doctors;
     }
 
     public String getDescr() {
