@@ -33,8 +33,8 @@ public class LungImgSlideService {
                 // TODO: @hades
                 // 4. 将记录插入到数据库中
                 File parentDir = new File(GlobalConstant.DICOM_ZHEYI_LUNG  + dir);
-                List<String> dcmNameList = new ArrayList<>();
-//                getDcmNameList(parentDir, dcmNameList);
+                List<String> nameList = new ArrayList<>();
+                getDcmNameList(parentDir, "", nameList);
 
 
 //                int dcms = parent.listFiles().length;
@@ -52,14 +52,23 @@ public class LungImgSlideService {
             }
         }
     }
-    private List<String> getDcmNameList(File file, List list) {
-        List<String> nameList = new ArrayList<>();
-        if (file.isDirectory()) {
 
-        } else if (file.isFile()) {
-            nameList.add(file.getName());
+    private void getDcmNameList(File dir, String parentPath, List<String> nameList) {
+        asserDirectory(dir);
+        File[] files = dir.listFiles();
+        for (File file : files) {
+            if (file.isDirectory()) {
+                getDcmNameList(file, parentPath + File.separator + file.getName(), nameList);
+            } else if (file.isFile()) {
+                nameList.add(parentPath + file.getName());
+            }
         }
-        return nameList;
+    }
+
+    private void asserDirectory(File file) {
+        if (!file.isDirectory()) {
+            throw new IllegalArgumentException(file.getName() + " is not a directory.");
+        }
     }
 
 }
