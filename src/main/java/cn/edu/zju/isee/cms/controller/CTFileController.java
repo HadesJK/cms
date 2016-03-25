@@ -11,11 +11,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jql on 2016/3/24.
@@ -31,12 +33,12 @@ public class CTFileController {
         return "upload/upload";
     }
 
-    @RequestMapping("filesUpload")
-    public void upload(@RequestParam("files") MultipartFile[] files, Model model) {
-        if (files != null && files.length > 0) {
-            service.saveFiles(files);
-        }
-    }
+//    @RequestMapping("filesUpload")
+//    public void upload(@RequestParam("files") MultipartFile[] files, Model model) {
+//        if (files != null && files.length > 0) {
+//            service.saveFiles(files);
+//        }
+//    }
 //    @RequestMapping(method = RequestMethod.POST, value = "filesUpload")
 //    public void upload(HttpServletRequest request) {
 //        DiskFileItemFactory dff = new DiskFileItemFactory();
@@ -53,4 +55,11 @@ public class CTFileController {
 //        }
 //        System.out.println(fileList.size());
 //    }
+    @RequestMapping(method = RequestMethod.POST, value = "filesUpload")
+    public void upload(HttpServletRequest request) {
+        MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+        Map<String, MultipartFile> fileMap = multiRequest.getFileMap();
+        System.out.println(fileMap.size());
+
+    }
 }

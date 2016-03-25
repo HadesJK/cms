@@ -46,33 +46,35 @@
         $('#file_upload').uploadify({
             'debug': false,
             'auto': false, 			//是否自动上传,
+            'multi' : true,
             'buttonClass': 'haha', 			//按钮辅助class
             'buttonText': '浏览', 		//按钮文字
             'height': 30,				//按钮高度
             'width': 100,				//按钮宽度
 //            'checkExisting': 'uploadify/check-exists.php',//是否检测图片存在,不检测:false
             'fileObjName': 'files',			 //默认 Filedata, _FILES控件名称
-            'fileSizeLimit': '1MB',			 //文件大小限制 0为无限制 默认KB
+            'fileSizeLimit': '512MB',			 //文件大小限制 0为无限制 默认KB
             'fileTypeDesc': 'All Files',		 //图片选择描述
-//            'fileTypeExts': '*.gif; *.jpg; *.png',//文件后缀限制 默认：'*.*'
-            'formData': {'someKey': 'someValue', 'someOtherKey': 1},//传输数据JSON格式
+//            'fileTypeExts': '*.zip; *.rar; *.tar.gz',//文件后缀限制 默认：'*.*'
+            'formData': {'millisecond': new Date().getMilliseconds},//传输数据JSON格式
             //'overrideEvents': ['onUploadProgress'],  // The progress will not be updated
             //'progressData' : 'speed',				//默认percentage 进度显示方式
-            'queueID': false,				//默认队列ID
-            'queueSizeLimit': 20, 					//一个队列上传文件数限制
+            'queueID': 'queue',				//默认队列ID
+            'queueSizeLimit': 100, 					//一个队列上传文件数限制
             'removeCompleted': false,				//完成时是否清除队列 默认true
             'removeTimeout': 3,					//完成时清除队列显示秒数,默认3秒
             'requeueErrors': false,				//队列上传出错，是否继续回滚队列
-            'successTimeout': 5,					//上传超时
+            'successTimeout': 60,					//上传超时
             'uploadLimit': 100,					//允许上传的最多张数
             'swf': 'uploadify/uploadify.swf', //swfUpload
             'uploader': 'filesUpload', //服务器端脚本
-            'multi' : true,
-
+            'method':'post',
 
             //修改formData数据
             'onUploadStart': function (file) {
-                //$("#file_upload").uploadify("settings", "someOtherKey", 2);
+//                var mDate = new Date();
+//                var millisecond = mDate.getMilliseconds();
+//                $("#file_upload").uploadify("settings", "someOtherKey", millisecond);
             },
             //删除时触发
             'onCancel': function (file) {
@@ -122,8 +124,18 @@
         alert('The button says ' + $('#file_upload').uploadify('settings', 'buttonText'));
     }
 </script>
+
+##<script type="application/javascript">
+##    function clickToUpload() {
+##        // 这里我先挖个坑...异步的问题
+##        var myDate = new Date();
+##        var milliseconds = myDate.getMilliseconds();
+##        $('#file_upload').uploadify( 'upload', '*');
+##    }
+##</script>
+
 <h4>操作:</h4>
-<a href="javascript:$('#file_upload').uploadify('upload', '*');">开始上传</a>  | 
+<a href="javascript:$('#file_upload').uploadify( 'upload', '*')">开始上传</a>  | 
 <a href="javascript:$('#file_upload').uploadify('cancel', '*');">清除队列</a>
 ##<a href="javascript:$('#file_upload').uploadify('destroy');">销毁上传</a>  | 
 ##<a href="javascript:$('#file_upload').uploadify('disable', true);">禁用上传</a>  | 
