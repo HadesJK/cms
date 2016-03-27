@@ -12,7 +12,8 @@
 
     <style type="text/css">
         body {
-            font: 13px Arial, Helvetica, Sans-serif;
+            font-family: "Arial","Microsoft YaHei","黑体","宋体",sans-serif;
+            /*font: 13px Arial, Helvetica, Sans-serif;*/
         }
 
         .haha {
@@ -22,12 +23,21 @@
         #queue {
             background-color: #FFF;
             border-radius: 3px;
+            border: 2px solid #ebebeb;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-            height: 103px;
-            margin-bottom: 10px;
-            overflow: auto;
+            height: 250px;
+            width: 500px;
+            margin-left:40px;
+            margin-top: 20px;
+            margin-bottom: 20px;
             padding: 5px 10px;
-            width: 300px;
+            overflow: auto;
+        }
+        #file_upload, h4{
+            margin-left:40px;
+        }
+        h1{
+            margin-left: 20px;
         }
     </style>
 </head>
@@ -40,6 +50,18 @@
     <div id="queue"></div>
     <input id="file_upload" name="file_upload" type="file" multiple="true">
 </form>
+
+<h4>操作:</h4>
+<a style="margin-left: 40px" href="javascript:$('#file_upload').uploadify( 'upload', '*')">开始上传</a>  | 
+<a href="javascript:$('#file_upload').uploadify('cancel', '*');">清除队列</a>
+##<a href="javascript:$('#file_upload').uploadify('destroy');">销毁上传</a>  | 
+##<a href="javascript:$('#file_upload').uploadify('disable', true);">禁用上传</a>  | 
+##<a href="javascript:$('#file_upload').uploadify('disable', false);">激活上传</a>  | 
+##<a href="javascript:$('#file_upload').uploadify('stop');">停止上传</a>  | 
+##<a href="javascript:changeBtnText();">变换按钮</a>  | 
+<h4>大小:</h4>
+
+<div id='progress'></div>
 
 <script type="text/javascript">
     $(function () {
@@ -137,16 +159,5 @@
 ##    }
 ##</script>
 
-<h4>操作:</h4>
-<a href="javascript:$('#file_upload').uploadify( 'upload', '*')">开始上传</a>  | 
-<a href="javascript:$('#file_upload').uploadify('cancel', '*');">清除队列</a>
-##<a href="javascript:$('#file_upload').uploadify('destroy');">销毁上传</a>  | 
-##<a href="javascript:$('#file_upload').uploadify('disable', true);">禁用上传</a>  | 
-##<a href="javascript:$('#file_upload').uploadify('disable', false);">激活上传</a>  | 
-##<a href="javascript:$('#file_upload').uploadify('stop');">停止上传</a>  | 
-##<a href="javascript:changeBtnText();">变换按钮</a>  | 
-<h4>大小:</h4>
-
-<div id='progress'></div>
 </body>
 </html>
