@@ -22,7 +22,7 @@
                 <td class="center">$!cm.doctors</td>
                 <td class="center">$!cm.descr</td>
                 <td class="center">
-                    <a class="btn btn-success" href="ctDetails?ctId=$!cm.id">
+                    <a class="btn btn-success" href="ctDetails/$!cm.id">
                         <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                         浏览
                     </a>
@@ -33,6 +33,10 @@
                     <a class="btn btn-danger" href="#">
                         <i class="glyphicon glyphicon-trash icon-white"></i>
                         删除
+                    </a>
+                    <a class="btn btn-danger" href="#">
+                        <i class="glyphicon glyphicon-trash icon-white"></i>
+                        下载
                     </a>
                 </td>
             </tr>

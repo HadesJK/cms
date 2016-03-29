@@ -32,4 +32,7 @@ public class GlobalConstant {
     public static final String DICOM_ZHEYI_LUNG = DICOM_ZHEYI + "lung/";
     public static final String JPG_ZHEYI_LUNG = JPG_ZHEYI + "lung/";
 
+    // JAVA MATLAB 交互的共享文件夹
+    public static final String JAVA_MATLAB_DIR = BASE_PATH + "ct/jm/";
+
 }

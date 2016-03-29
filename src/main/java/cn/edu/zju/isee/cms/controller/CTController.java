@@ -35,11 +35,11 @@ public class CTController {
         return "ctlist/ctList";
     }
 
-    @RequestMapping("/ctDetails")
+    @RequestMapping("/ctDetails/{ctId}")
     public String ctDetails(@PathVariable int ctId, Model model) {
         List<CTSlide> slides = slideService.getCTSlides(ctId);
         model.addAttribute("slides", slides);
-        return "ctDetails";
+        return "ctlist/slideList";
     }
 
 
