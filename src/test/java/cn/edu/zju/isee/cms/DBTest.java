@@ -37,6 +37,9 @@ public class DBTest {
         ct.setHospital("test");
 //        ct.setId(124);
         ct.setItem("test");
+        ct.setZipDir("test");
+        ct.setJpgDir("test");
+        ct.setZipName("test");
         ct.setPatientName("test");
         ct.setSlideNum(123);
         CTMapper ctMapper = applicationContext.getBean(CTMapper.class);
@@ -47,7 +50,7 @@ public class DBTest {
     @Test
     public void testSelectById(){
         CTMapper ctMapper = applicationContext.getBean(CTMapper.class);
-        CT ct = ctMapper.selectById(123);
+        CT ct = ctMapper.selectById(146);
         System.out.println(ct.getBuildTime());
     }
 
@@ -68,8 +71,11 @@ public class DBTest {
         ct.setDescr("test001");
         ct.setDoctors("test002");
         ct.setHospital("test003");
-        ct.setId(124);
+        ct.setId(147);
         ct.setItem("test004");
+        ct.setZipDir("test006");
+        ct.setJpgDir("test007");
+        ct.setZipName("test008");
         ct.setPatientName("test005");
         ct.setSlideNum(999);
         CTMapper ctMapper = applicationContext.getBean(CTMapper.class);

@@ -10,6 +10,9 @@ public class CT {
     private Integer slideNum;
     private Date buildTime;
     private String baseDir;
+    private String zipDir;
+    private String jpgDir;
+    private String zipName;
     private String patientName;
     private String doctors;
     private String descr;
@@ -86,5 +89,29 @@ public class CT {
 
     public void setItem(String item) {
         this.item = item;
+    }
+
+    public String getZipDir() {
+        return zipDir;
+    }
+
+    public void setZipDir(String zipDir) {
+        this.zipDir = zipDir;
+    }
+
+    public String getJpgDir() {
+        return jpgDir;
+    }
+
+    public void setJpgDir(String jpgDir) {
+        this.jpgDir = jpgDir;
+    }
+
+    public String getZipName() {
+        return zipName;
+    }
+
+    public void setZipName(String zipName) {
+        this.zipName = zipName;
     }
 }

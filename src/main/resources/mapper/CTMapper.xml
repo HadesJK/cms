@@ -30,6 +30,15 @@
             <if test="baseDir != null" >
                 baseDir,
             </if>
+            <if test="zipDir != null" >
+                zipDir,
+            </if>
+            <if test="jpgDir != null" >
+                jpgDir,
+            </if>
+            <if test="zipName != null" >
+                zipName,
+            </if>
             <if test="patientName != null" >
                 patientName,
             </if>
@@ -58,6 +67,15 @@
             </if>
             <if test="baseDir != null" >
                 #{baseDir,jdbcType=VARCHAR},
+            </if>
+            <if test="zipDir != null" >
+                #{zipDir,jdbcType=VARCHAR},
+            </if>
+            <if test="jpgDir != null" >
+                #{jpgDir,jdbcType=VARCHAR},
+            </if>
+            <if test="zipName != null" >
+                #{zipName,jdbcType=VARCHAR},
             </if>
             <if test="patientName != null" >
                 #{patientName,jdbcType=VARCHAR},
@@ -99,6 +117,15 @@
         </if>
         <if test="baseDir != null" >
             baseDir = #{baseDir,jdbcType=VARCHAR},
+        </if>
+        <if test="zipDir != null" >
+            zipDir = #{zipDir,jdbcType=VARCHAR},
+        </if>
+        <if test="jpgDir != null" >
+            jpgDir = #{jpgDir,jdbcType=VARCHAR},
+        </if>
+        <if test="zipName != null" >
+            zipName = #{zipName,jdbcType=VARCHAR},
         </if>
         <if test="patientName != null" >
             patientName = #{patientName,jdbcType=VARCHAR},
