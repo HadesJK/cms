@@ -35,6 +35,13 @@ public class CTController {
         return "ctlist/ctList";
     }
 
+    @RequestMapping("/list/{ctId}")
+    public String predictAll() {
+        //TODO: @HadesJK
+        return null;
+    }
+
+
     @RequestMapping("/ctDetails/{ctId}")
     public String ctDetails(@PathVariable int ctId, Model model) {
         List<CTSlide> slides = slideService.getCTSlides(ctId);

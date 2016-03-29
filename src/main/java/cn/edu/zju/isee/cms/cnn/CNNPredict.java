@@ -1,5 +1,8 @@
 package cn.edu.zju.isee.cms.cnn;
 
+import cn.edu.zju.isee.cms.GlobalConstant;
+import cn.edu.zju.isee.cms.utils.shell.JavaShellUtils;
+
 import java.io.*;
 
 /**
@@ -7,7 +10,8 @@ import java.io.*;
  */
 public class CNNPredict {
     // 进程交互的目录
-    private static final String DcmDir = "/home/jql/dicom/DcmDir/";
+    private static final String DcmDir = GlobalConstant.JAVA_MATLAB_DIR;
+    private static final String DcmFile = GlobalConstant.JAVA_MATLAB_FILE_SUFFIX;
     static {
         File dir = new File(DcmDir);
         if (!dir.exists()) {
@@ -31,7 +35,7 @@ public class CNNPredict {
             throw new Exception("file Service 服务执行失败。");
 
         // shell 调用 matlab 执行任务
-        double[] result = JavaShellUtil.execShellAndMatlab();
+        double[] result = JavaShellUtils.execShellAndMatlab();
         double large = result[0];
         double small = result[1];
         double normal = result[2];
@@ -78,19 +82,5 @@ public class CNNPredict {
             return file.delete();
         }
         return false;
-    }
-
-
-    public static void main(String[] args) throws Exception {
-        CNNPredict pre = new CNNPredict(null);
-        String fileName = pre.fileService("1f8c8d48-12d7-42c8-ad2b-75f83c86b23a");
-        pre.deleteFile(fileName);
-        BufferedReader reader = new BufferedReader(new FileReader(new File(DcmDir + "lung.rst")));
-        String[] resultString = reader.readLine().trim().split("@#@#@");
-        double[] result = new double[resultString.length];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = Double.parseDouble(resultString[i]);
-        }
-        reader.close();
     }
 }

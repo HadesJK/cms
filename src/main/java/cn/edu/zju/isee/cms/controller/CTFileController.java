@@ -33,28 +33,4 @@ public class CTFileController {
         }
         return "husky";
     }
-
-//    @RequestMapping(method = RequestMethod.POST, value = "filesUpload")
-//    public void upload(HttpServletRequest request) {
-//        DiskFileItemFactory dff = new DiskFileItemFactory();
-//        ServletFileUpload upload = new ServletFileUpload(dff);
-//        upload.setHeaderEncoding("utf-8");
-//        List fileList = null;
-//        try {
-//            fileList = upload.parseRequest(request);
-//        } catch (FileUploadException e) {
-//            e.printStackTrace();
-//        }
-//        if (fileList != null && fileList.size() > 0) {
-//            System.out.println(fileList.size());
-//        }
-//        System.out.println(fileList.size());
-//    }
-//    @RequestMapping(method = RequestMethod.POST, value = "filesUpload")
-//    public void upload(HttpServletRequest request) {
-//        MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
-//        Map<String, MultipartFile> fileMap = multiRequest.getFileMap();
-//        System.out.println(fileMap.size());
-//
-//    }
 }

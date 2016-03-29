@@ -34,5 +34,7 @@ public class GlobalConstant {
 
     // JAVA MATLAB 交互的共享文件夹
     public static final String JAVA_MATLAB_DIR = BASE_PATH + "ct/jm/";
+    // JAVA 给 MATLAB 的信息写在 时间戳info.txt
+    public static final String JAVA_MATLAB_FILE_SUFFIX = "info.txt";
 
 }
