@@ -26,7 +26,7 @@
                         <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                         浏览
                     </a>
-                    <a class="btn btn-info" href="#">
+                    <a class="btn btn-warning" href="#">
                         <i class="glyphicon glyphicon-edit icon-white"></i>
                         编辑
                     </a>
@@ -34,8 +34,8 @@
                         <i class="glyphicon glyphicon-trash icon-white"></i>
                         删除
                     </a>
-                    <a class="btn btn-danger" href="#">
-                        <i class="glyphicon glyphicon-trash icon-white"></i>
+                    <a class="btn btn-info" href="${rc.contextPath}/list/Download?id=$!cm.id">
+                        <i class="glyphicon glyphicon-download icon-white"></i>
                         下载
                     </a>
                 </td>
