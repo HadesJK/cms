@@ -1,11 +1,13 @@
 package cn.edu.zju.isee.cms.utils.shell;
 
+import cn.edu.zju.isee.cms.GlobalConstant;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Created by jql on 2016/3/18.
@@ -14,40 +16,24 @@ import java.util.List;
 
 public class JavaShellUtils {
 
-    private static final String separator = "@@@###@@@";
-
-    private static final String shellPath = "/home/jql/test.sh";
-    private static final String resultFile = "/home/jql/dicom/DcmDir/lung.rst";
-
-    // 获取交互文件夹下的文件进行预测，并将结果从文件中读入，并解析成double类型的数组
-    public static double[] execShellAndMatlab() throws Exception {
-
-        Process process = Runtime.getRuntime().exec(shellPath);
-        File rstFile = new File(resultFile);
-
-        if (!rstFile.exists()) {
-            List<String> error = new ArrayList<>();
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
-            String line = null;
-            while ((line = reader.readLine()) != null) {
-                error.add(line);
+    // 获取交互文件夹下的文件进行预测，并将结果从文件中读入
+    public static List<String> execShellAndMatlab() throws Exception {
+        List<String> rstList = new ArrayList<>();
+        Process process = Runtime.getRuntime().exec(GlobalConstant.SHELL);
+        File rstFile = new File(GlobalConstant.RESULT_FILE);
+        process.waitFor(20, TimeUnit.SECONDS);  // 等待20s，然后获取 matlab 执行的结果
+        if (rstFile.exists()) {
+            BufferedReader reader = new BufferedReader(new FileReader(rstFile));
+            String result;
+            while ((result = reader.readLine()) != null) {
+                rstList.add(result);
             }
-            List<String> in = new ArrayList<>();
-            reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
-            while ((line = reader.readLine()) != null) {
-                in.add(line);
-            }
-            String msg = error.toString() + "\n-----\n" + in.toString();
-            throw new Exception(msg);
+            reader.close();
         }
-
-        BufferedReader reader = new BufferedReader(new FileReader(new File(resultFile)));
-        String[] resultString = reader.readLine().trim().split(separator);
-        double[] result = new double[resultString.length];
-        for (int i = 0; i < result.length; i++) {
-            result[i] = Double.parseDouble(resultString[i]);
+        if (rstFile.exists() && rstFile.isFile()) {
+            rstFile.delete();
         }
-        return result;
+        return rstList;
     }
 
 }

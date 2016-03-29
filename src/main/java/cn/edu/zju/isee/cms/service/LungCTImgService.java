@@ -32,12 +32,17 @@ public class LungCTImgService {
         CT ct = ctMapper.selectById(ctId);
         // 1. 将基本信息写入到 java 和 matlab 交互的文件夹下， 文件名为时间戳+info.txt
         List<CTSlide> slides = slideMapper.selectByCtId(ct.getId());
-        writeToFile(ct.getBaseDir(), slides);
+        String toFileName = writeToFile(ct.getBaseDir(), slides);
         // 2. 执行 linux shell，调用 matlab 代码进行预测， 并获取结果
-        JavaShellUtils.execShellAndMatlab();
+        List<String> resultList = JavaShellUtils.execShellAndMatlab();
+        // 3. 删除预测结果的文件 和 2 中产生的结果
+        File toFile = new File(toFileName);
+        if (toFile.exists() && toFile.isFile()) {
+            toFile.delete();
+        }
     }
 
-    private void writeToFile(String baseDir,  List<CTSlide> slides) throws IOException {
+    private String writeToFile(String baseDir,  List<CTSlide> slides) throws IOException {
         File dir = new File(GlobalConstant.JAVA_MATLAB_DIR);
         if (!dir.exists()) {
             dir.mkdirs();
@@ -49,6 +54,7 @@ public class LungCTImgService {
             writer.newLine();
         }
         writer.close();
+        return fileName;
     }
 
 }
