@@ -47,10 +47,8 @@ public class DBTest {
     @Test
     public void testSelectById(){
         CTMapper ctMapper = applicationContext.getBean(CTMapper.class);
-        List<CT> ctList = ctMapper.selectById(123);
-        for (CT ct : ctList){
-            System.out.println(ct.getBuildTime());
-        }
+        CT ct = ctMapper.selectById(123);
+        System.out.println(ct.getBuildTime());
     }
 
     @Test

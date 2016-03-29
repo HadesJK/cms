@@ -49,5 +49,16 @@ public class CTController {
         return "ctlist/slideList";
     }
 
+    @RequestMapping("/predict/{ctId}")
+    public String ctPredictAll(@PathVariable int ctId, Model model) {
+        try {
+            imgService.ctPredict(ctId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+
 
 }

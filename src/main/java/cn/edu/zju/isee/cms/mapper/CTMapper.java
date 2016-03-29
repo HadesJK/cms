@@ -13,7 +13,7 @@ public interface CTMapper {
 
     List<Integer> selectAllIds();
 
-    List<CT> selectById(int id);
+    CT selectById(int id);
 
     void updateById(CT ct);
 
