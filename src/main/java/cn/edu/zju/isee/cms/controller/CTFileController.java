@@ -48,7 +48,6 @@ public class CTFileController {
     @RequestMapping(value = "/list/download", method = RequestMethod.GET)
     public void handleFileDownload(HttpServletResponse res, @RequestParam("id") int id) {
         CT ct = ctImgService.getCT(id);
-
         String filename = "SL0058.zip";
         try {
             File f = new File(GlobalConstant.ZIP_ZHEYI_LUNG + "/1/" + filename);
