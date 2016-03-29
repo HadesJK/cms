@@ -22,6 +22,7 @@
         <mybatis.version>3.3.1</mybatis.version>
         <mybatis.spring.version>1.2.4</mybatis.spring.version>
         <mysql.driven.version>5.1.38</mysql.driven.version>
+        <jetty.version>9.3.8.v20160314</jetty.version>
 
     </properties>
 
@@ -174,23 +175,42 @@
             <version>${mysql.driven.version}</version>
         </dependency>
 
+        <!-- zip and unzip -->
         <dependency>
             <groupId>org.apache.ant</groupId>
             <artifactId>ant</artifactId>
             <version>1.9.6</version>
         </dependency>
 
+        <!--java web jetty-->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-webapp</artifactId>
+            <version>${jetty.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>${servlet.version}</version>
-            <scope>provided</scope>
+            <!--<scope>provided</scope>-->
         </dependency>
 
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

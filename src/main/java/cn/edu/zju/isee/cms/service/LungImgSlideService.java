@@ -48,6 +48,8 @@ public class LungImgSlideService {
                 ct.setSlideNum(nameList.size());
                 ct.setBuildTime(new Date());
                 ct.setBaseDir(GlobalConstant.DICOM_ZHEYI_LUNG + dir);
+                ct.setZipDir(dir);
+                ct.setZipName(name);
                 ct.setPatientName(null);
                 ct.setDoctors(null);
                 ct.setDescr(null);
@@ -75,7 +77,7 @@ public class LungImgSlideService {
         File[] files = dir.listFiles();
         for (File file : files) {
             if (file.isDirectory()) {
-                getDcmNameList(file, parentPath + File.separator + file.getName() + File.separator, nameList);
+                getDcmNameList(file, parentPath + file.getName() + File.separator, nameList);
             } else if (file.isFile()) {
                 nameList.add(parentPath + file.getName());
             }

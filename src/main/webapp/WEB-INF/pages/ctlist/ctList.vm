@@ -30,9 +30,9 @@
                         <i class="glyphicon glyphicon-edit icon-white"></i>
                         编辑
                     </a>
-                    <a class="btn btn-danger" href="#">
+                    <a class="btn btn-danger" href="predict/$!cm.id">
                         <i class="glyphicon glyphicon-trash icon-white"></i>
-                        删除
+                        预测
                     </a>
                     <a class="btn btn-info" href="${rc.contextPath}/list/download?id=$!cm.id">
                         <i class="glyphicon glyphicon-download icon-white"></i>

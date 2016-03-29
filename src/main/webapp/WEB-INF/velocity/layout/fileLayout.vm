@@ -57,9 +57,9 @@
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
                         <li class="nav-header">Main</li>
-                        <li><a class="ajax-link" href="list"><i class="glyphicon glyphicon-home"></i><span>CT列表</span></a>
+                        <li><a class="ajax-link" href="${rc.contextPath}/list"><i class="glyphicon glyphicon-home"></i><span>CT列表</span></a>
                         </li>
-                        <li><a class="ajax-link" href="upload"><i class="glyphicon glyphicon-eye-open"></i><span>文件上传</span></a>
+                        <li><a class="ajax-link" href="${rc.contextPath}/upload"><i class="glyphicon glyphicon-eye-open"></i><span>文件上传</span></a>
                         </li>
                         <li><a class="ajax-link" href="form.html"><i
                                 class="glyphicon glyphicon-edit"></i><span> Forms</span></a></li>
