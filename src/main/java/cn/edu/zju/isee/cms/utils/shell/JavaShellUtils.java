@@ -17,6 +17,7 @@ import java.util.concurrent.TimeUnit;
 public class JavaShellUtils {
 
     // 获取交互文件夹下的文件进行预测，并将结果从文件中读入
+    // ATTENTION: 当返回的LIST长度为1时，就是对单张切片进行预测
     public static List<String> execShellAndMatlab() throws Exception {
         List<String> rstList = new ArrayList<>();
         Process process = Runtime.getRuntime().exec(GlobalConstant.SHELL);

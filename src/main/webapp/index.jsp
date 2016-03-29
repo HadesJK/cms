@@ -40,6 +40,7 @@
 <body>
     <!-- topbar starts -->
     <div class="navbar navbar-default" role="navigation">
+        <p class="navbar-brand" style="font-size: 50px; width: auto;margin-top: 25px">CT辅助诊断系统</p>
     </div>
     <!-- topbar ends -->
 <div class="ch-container">
@@ -53,12 +54,11 @@
                     </div>
                     <ul class="nav nav-pills nav-stacked main-menu">
                         <li class="nav-header">Main</li>
-                        <li><a class="ajax-link" href="index.html"><i class="glyphicon glyphicon-home"></i><span> Dashboard</span></a>
+                        <li><a class="ajax-link" href="list"><i class="glyphicon glyphicon-home"></i><span>CT列表</span></a>
                         </li>
-                        <li><a class="ajax-link" href="ui.html"><i class="glyphicon glyphicon-eye-open"></i><span> UI Features</span></a>
+                        <li><a class="ajax-link" href="upload"><i class="glyphicon glyphicon-eye-open"></i><span>文件上传</span></a>
                         </li>
-                        <li><a class="ajax-link" href="form.html"><i
-                                    class="glyphicon glyphicon-edit"></i><span> Forms</span></a></li>
+                        <li><a class="ajax-link" href="form.html"><i class="glyphicon glyphicon-edit"></i><span> Forms</span></a></li>
                         <li><a class="ajax-link" href="chart.html"><i class="glyphicon glyphicon-list-alt"></i><span> Charts</span></a>
                         </li>
                         <li><a class="ajax-link" href="typography.html"><i class="glyphicon glyphicon-font"></i><span> Typography</span></a>
@@ -122,7 +122,7 @@
 
     <footer class="row">
         <p class="col-md-9 col-sm-9 col-xs-12 copyright">&copy; <a href="http://www.isee.zju.edu.cn" target="_blank">浙江大学信电系</a> 2015 - 2016</p>
-        <p class="col-md-3 col-sm-3 col-xs-12 powered-by">Developed by: <a href="http://www.isee.zju.edu.cn">智慧医疗实验室</a></p>
+        <p class="col-md-3 col-sm-3 col-xs-12 powered-by">相关链接：<a href="http://www.openehr.org/">openEHR</a> | <a href="https://www.healthit.gov/patients-families/blue-button/about-blue-button">美国蓝钮计划</a></p>
     </footer>
 
 </div><!--/.fluid-container-->
