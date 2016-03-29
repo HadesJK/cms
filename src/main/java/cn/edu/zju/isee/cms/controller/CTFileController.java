@@ -1,6 +1,8 @@
 package cn.edu.zju.isee.cms.controller;
 
 import cn.edu.zju.isee.cms.GlobalConstant;
+import cn.edu.zju.isee.cms.entity.CT;
+import cn.edu.zju.isee.cms.service.LungCTImgService;
 import cn.edu.zju.isee.cms.service.LungImgSlideService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +17,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 
 /**
  * Created by jql on 2016/3/24.
@@ -23,7 +26,10 @@ import java.io.FileInputStream;
 public class CTFileController {
 
     @Resource
-    private LungImgSlideService service;
+    private LungImgSlideService imgSlideService;
+
+    @Resource
+    private LungCTImgService ctImgService;
 
     @RequestMapping("upload")
     public String fileUpload() {
@@ -32,22 +38,19 @@ public class CTFileController {
 
     @RequestMapping(value = "filesUpload", produces = "text/html;")
     @ResponseBody
-    public String upload(@RequestParam("files") MultipartFile[] files, Model model) {
-        System.out.println(files.length);
+    public String upload(@RequestParam("files") MultipartFile[] files) {
         if (files != null && files.length > 0) {
-            service.saveFiles(files);
+            imgSlideService.saveFiles(files);
         }
-        return "husky";
+        return "success";
     }
 
-    @RequestMapping(value = "/list/Download", method = RequestMethod.GET)
-    public void handleFileDownload(HttpServletResponse res, @RequestParam("id") String id) {
+    @RequestMapping(value = "/list/download", method = RequestMethod.GET)
+    public void handleFileDownload(HttpServletResponse res, @RequestParam("id") int id) {
+        CT ct = ctImgService.getCT(id);
+
         String filename = "SL0058.zip";
         try {
-//            String fn = "/Test.xls";
-//            URL url = getClass().getResource(fn);
-//            File f = new File(url.toURI());
-            System.out.println(id);
             File f = new File(GlobalConstant.ZIP_ZHEYI_LUNG + "/1/" + filename);
             System.out.println("Loading file "+ filename +"("+f.getAbsolutePath()+")");
             if (f.exists()) {
@@ -56,10 +59,10 @@ public class CTFileController {
                 res.setHeader("Content-Disposition", "attachment; filename="+f.getName());
                 FileCopyUtils.copy(new FileInputStream(f), res.getOutputStream());
             } else {
-                System.out.println("File"+ filename +"("+f.getAbsolutePath()+") does not exist");
+                throw new IOException("File"+ filename +"("+f.getAbsolutePath()+") does not exist");
             }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

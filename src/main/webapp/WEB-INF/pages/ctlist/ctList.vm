@@ -34,7 +34,7 @@
                         <i class="glyphicon glyphicon-trash icon-white"></i>
                         删除
                     </a>
-                    <a class="btn btn-info" href="${rc.contextPath}/list/Download?id=$!cm.id">
+                    <a class="btn btn-info" href="${rc.contextPath}/list/download?id=$!cm.id">
                         <i class="glyphicon glyphicon-download icon-white"></i>
                         下载
                     </a>

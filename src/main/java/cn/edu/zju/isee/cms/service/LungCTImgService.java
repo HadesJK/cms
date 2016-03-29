@@ -28,6 +28,10 @@ public class LungCTImgService {
         return ctMapper.selectAll();
     }
 
+    public CT getCT(int id) {
+        return ctMapper.selectById(id);
+    }
+
     public void ctPredict(int ctId) throws Exception {
         CT ct = ctMapper.selectById(ctId);
         // 1. 将基本信息写入到 java 和 matlab 交互的文件夹下， 文件名为时间戳+info.txt
