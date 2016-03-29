@@ -88,4 +88,8 @@ public class LungImgSlideService {
         }
     }
 
+    public List<CTSlide> getCTSlides(int ctId) {
+        return null;
+    }
+
 }

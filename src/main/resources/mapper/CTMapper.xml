@@ -121,19 +121,8 @@
 
     </update>
 
-    <!--<insert id="insert" parameterType="cn.edu.zju.isee.cms.entity.CT" useGeneratedKeys="true" keyProperty="id">-->
-        <!--insert into ct (slideNum, buildTime, baseDir, patientName, doctors, descr)-->
-        <!--values ( #{slideId,jdbcType=INTEGER}, #{fileName,jdbcType=VARCHAR},#{absolutePath,jdbcType=VARCHAR})-->
-    <!--</insert>-->
-
-    <!--<select id="selectBySlideId" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
-        <!--select * from lung_img-->
-        <!--where slideId = #{slideId,jdbcType=INTEGER}-->
-    <!--</select>-->
-
-    <!--<select id="selectById" resultMap="BaseResultMap" parameterType="java.lang.Integer" >-->
-        <!--select * from lung_img-->
-        <!--where id = #{id,jdbcType=INTEGER}-->
-    <!--</select>-->
+    <select id="selectAll" resultMap="BaseResultMap">
+        SELECT * FROM ct
+    </select>
 
 </mapper>

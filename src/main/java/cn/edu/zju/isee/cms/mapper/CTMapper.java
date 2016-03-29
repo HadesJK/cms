@@ -1,7 +1,6 @@
 package cn.edu.zju.isee.cms.mapper;
 
 import cn.edu.zju.isee.cms.entity.CT;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
@@ -17,4 +16,6 @@ public interface CTMapper {
     List<CT> selectById(int id);
 
     void updateById(CT ct);
+
+    List<CT> selectAll();
 }
