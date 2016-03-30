@@ -1,14 +1,14 @@
 <script type="text/javascript">
     function run(id, cost){
         var progressbar = document.getElementById(id);
-        var total = document.getElementById("total");
-        document.getElementById('progressunit').style.display = "";
+        var total = document.getElementById("total"+id);
+        document.getElementById('progressunit'+id).style.display = "";
         progressbar.style.width=parseInt(progressbar.style.width) + 1 + "%";
         total.innerHTML = progressbar.style.width;
         if(progressbar.style.width == "100%"){
             window.clearTimeout(timeout);
             total.innerHTML = progressbar.style.width = "0%";
-            document.getElementById('progressunit').style.display = "none";
+            document.getElementById('progressunit'+id).style.display = "none";
             return;
         }
 
@@ -58,10 +58,10 @@
                 </td>
             </tr>
 
-            <tr id="progressunit" style="display: none">
+            <tr id="progressunit$!cm.id" style="display: none">
                 <td colspan="7">
                 <div>
-                    <span id="total"></span>
+                    <span id="total$!cm.id"></span>
                     <div class="progress sm progress-striped active">
                         <div id="$!cm.id" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
                         </div>
