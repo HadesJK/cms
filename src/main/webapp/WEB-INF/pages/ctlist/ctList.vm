@@ -48,7 +48,7 @@
                         编辑
                     </a>
                     <a class="btn btn-danger" href="predict/$!cm.id" onclick="run($!cm.id, ($!cm.slideNum + 30) * 10)">
-                        <i class="glyphicon glyphicon-trash icon-white"></i>
+                        <i class="glyphicon glyphicon-list-alt icon-white"></i>
                         预测
                     </a>
                     <a class="btn btn-info" href="${rc.contextPath}/list/download?id=$!cm.id">
