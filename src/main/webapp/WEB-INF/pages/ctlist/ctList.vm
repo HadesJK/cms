@@ -1,5 +1,5 @@
 <script type="text/javascript">
-    function run(id){
+    function run(id, cost){
         var progressbar = document.getElementById(id);
         var total = document.getElementById("total");
         document.getElementById('progressunit').style.display = "";
@@ -11,7 +11,8 @@
             document.getElementById('progressunit').style.display = "none";
             return;
         }
-        var timeout=window.setTimeout("run("+id+")",100);
+
+        var timeout=window.setTimeout("run("+id+"," + cost + ")", cost);
     }
 </script>
 
@@ -33,7 +34,6 @@
             <tr>
                 <td>$!cm.id</td>
                 <td>$date.format('yyyy-MM-dd, hh:mm:ss',$!cm.buildTime) </td>
-##                <td>$!cm.buildTime</td>
                 <td>$!cm.patient</td>
                 <td class="center">$!cm.hospital</td>
                 <td class="center">$!cm.doctors</td>
@@ -47,7 +47,7 @@
                         <i class="glyphicon glyphicon-edit icon-white"></i>
                         编辑
                     </a>
-                    <a class="btn btn-danger" href="predict/$!cm.id" onclick="run($!cm.id)">
+                    <a class="btn btn-danger" href="predict/$!cm.id" onclick="run($!cm.id, ($!cm.slideNum + 30) * 10)">
                         <i class="glyphicon glyphicon-trash icon-white"></i>
                         预测
                     </a>
