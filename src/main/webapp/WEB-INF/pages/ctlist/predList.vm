@@ -3,20 +3,20 @@
         <thead>
         <tr>
             <th>序号</th>
-            <th>说略图</th>
+            <th>缩略图</th>
             <th>预测结果</th>
             <th>预测概率</th>
         </tr>
         </thead>
         <tbody>
-            #foreach($cm in $ct)
-            <tr>
-                <td>$!cm.id</td>
-                <td>$date.format('yyyy-MM-dd, hh:mm:ss',$!cm.buildTime) </td>
-                <td>$!cm.patient</td>
-                <td class="center">$!cm.hospital</td>
-            </tr>
-            #end
+        #foreach($pred in $preds)
+        <tr>
+            <td>$!pred.serialNum</td>
+            <td>$!pred.pic</td>
+            <td>$!pred.label</td>
+            <td>$!pred.probably</td>
+        </tr>
+        #end
         </tbody>
     </table>
 </div>

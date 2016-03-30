@@ -1,6 +1,7 @@
 package cn.edu.zju.isee.cms.service;
 
 import cn.edu.zju.isee.cms.GlobalConstant;
+import cn.edu.zju.isee.cms.controller.model.RecogModel;
 import cn.edu.zju.isee.cms.entity.CT;
 import cn.edu.zju.isee.cms.entity.CTSlide;
 import cn.edu.zju.isee.cms.mapper.CTMapper;
@@ -35,7 +36,7 @@ public class LungCTImgService {
         return ctMapper.selectById(id);
     }
 
-    public Map<Integer,String> ctPredict(int ctId) throws Exception {
+    public List<RecogModel> ctPredict(int ctId) throws Exception {
         CT ct = ctMapper.selectById(ctId);
 
         // 1. 将基本信息写入到 java 和 matlab 交互的文件夹下， 文件名为时间戳+info.txt
@@ -45,15 +46,13 @@ public class LungCTImgService {
         // 2. 执行 linux shell，调用 matlab 代码进行预测， 并获取结果
         JavaShellUtils.execShellAndMatlab(slides.size() * 1 + 30);
         File rstFile = new File(toFileName + GlobalConstant.RESULT_FILE_SUFFIX);
-        Map<Integer,String> result = new HashMap<>();
-        int i = 0;
+        List<String> list = new ArrayList<>();
         if (rstFile.exists() && rstFile.isFile()) {
             BufferedReader reader = new BufferedReader(new FileReader(rstFile));
             String str;
             while ((str = reader.readLine()) != null) {
-                result.put(slides.get(i).getId(), str);
+                list.add(str);
             }
-            i ++;
             reader.close();
             rstFile.delete();
         }
@@ -65,7 +64,7 @@ public class LungCTImgService {
         }
 
         // 4. 返回结果
-        return result;
+        return RecogModel.build(slides, list);
     }
 
     private String writeToFile(String baseDir,  List<CTSlide> slides) throws IOException {

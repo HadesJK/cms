@@ -1,5 +1,6 @@
 package cn.edu.zju.isee.cms.controller;
 
+import cn.edu.zju.isee.cms.controller.model.RecogModel;
 import cn.edu.zju.isee.cms.entity.CT;
 import cn.edu.zju.isee.cms.entity.CTSlide;
 import cn.edu.zju.isee.cms.mapper.CTMapper;
@@ -54,7 +55,7 @@ public class CTController {
     public String ctPredictAll(@PathVariable int ctId, Model model) {
         String msg;
         try {
-            Map<Integer, String> result = imgService.ctPredict(ctId);
+            List<RecogModel> result = imgService.ctPredict(ctId);
             model.addAttribute("preds", result);
             msg = "ctlist/predList";
         } catch (Exception e) {
