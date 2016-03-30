@@ -56,7 +56,7 @@ public class CTController {
         try {
             Map<Integer, String> result = imgService.ctPredict(ctId);
             model.addAttribute("preds", result);
-            msg = "predList";
+            msg = "ctlist/predList";
         } catch (Exception e) {
             model.addAttribute("exception", e.getMessage());
             msg = "error";
