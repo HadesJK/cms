@@ -10,7 +10,10 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jql on 2016/3/28.
@@ -32,18 +35,37 @@ public class LungCTImgService {
         return ctMapper.selectById(id);
     }
 
-    public void ctPredict(int ctId) throws Exception {
+    public Map<Integer,String> ctPredict(int ctId) throws Exception {
         CT ct = ctMapper.selectById(ctId);
+
         // 1. 将基本信息写入到 java 和 matlab 交互的文件夹下， 文件名为时间戳+info.txt
         List<CTSlide> slides = slideMapper.selectByCtId(ct.getId());
         String toFileName = writeToFile(ct.getBaseDir(), slides);
+
         // 2. 执行 linux shell，调用 matlab 代码进行预测， 并获取结果
-        List<String> resultList = JavaShellUtils.execShellAndMatlab();
+        JavaShellUtils.execShellAndMatlab(slides.size() * 1 + 30);
+        File rstFile = new File(toFileName + GlobalConstant.RESULT_FILE_SUFFIX);
+        Map<Integer,String> result = new HashMap<>();
+        int i = 0;
+        if (rstFile.exists() && rstFile.isFile()) {
+            BufferedReader reader = new BufferedReader(new FileReader(rstFile));
+            String str;
+            while ((str = reader.readLine()) != null) {
+                result.put(slides.get(i).getId(), str);
+            }
+            i ++;
+            reader.close();
+            rstFile.delete();
+        }
+
         // 3. 删除预测结果的文件 和 2 中产生的结果
         File toFile = new File(toFileName);
         if (toFile.exists() && toFile.isFile()) {
             toFile.delete();
         }
+
+        // 4. 返回结果
+        return result;
     }
 
     private String writeToFile(String baseDir,  List<CTSlide> slides) throws IOException {

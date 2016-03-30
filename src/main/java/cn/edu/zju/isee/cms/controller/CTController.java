@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by jql on 2016/3/24.
@@ -51,12 +52,17 @@ public class CTController {
 
     @RequestMapping("/predict/{ctId}")
     public String ctPredictAll(@PathVariable int ctId, Model model) {
+        String msg;
         try {
-            imgService.ctPredict(ctId);
+            Map<Integer, String> result = imgService.ctPredict(ctId);
+            model.addAttribute("preds", result);
+            msg = "predList";
         } catch (Exception e) {
+            model.addAttribute("exception", e.getMessage());
+            msg = "error";
             e.printStackTrace();
         }
-        return "";
+        return msg;
     }
 
 

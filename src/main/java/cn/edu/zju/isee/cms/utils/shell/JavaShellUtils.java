@@ -18,23 +18,9 @@ public class JavaShellUtils {
 
     // 获取交互文件夹下的文件进行预测，并将结果从文件中读入
     // ATTENTION: 当返回的LIST长度为1时，就是对单张切片进行预测
-    public static List<String> execShellAndMatlab() throws Exception {
-        List<String> rstList = new ArrayList<>();
+    public static void execShellAndMatlab(int waitTime) throws Exception {
         Process process = Runtime.getRuntime().exec(GlobalConstant.SHELL);
-        File rstFile = new File(GlobalConstant.RESULT_FILE);
-        process.waitFor(20, TimeUnit.SECONDS);  // 等待20s，然后获取 matlab 执行的结果
-        if (rstFile.exists()) {
-            BufferedReader reader = new BufferedReader(new FileReader(rstFile));
-            String result;
-            while ((result = reader.readLine()) != null) {
-                rstList.add(result);
-            }
-            reader.close();
-        }
-        if (rstFile.exists() && rstFile.isFile()) {
-            rstFile.delete();
-        }
-        return rstList;
+        process.waitFor(waitTime, TimeUnit.SECONDS);  // 等待，然后获取 matlab 执行的结果
     }
 
 }
