@@ -1,7 +1,8 @@
 <script type="text/javascript">
-    function run(){
-        var progressbar = document.getElementById("progressbar");
+    function run(id){
+        var progressbar = document.getElementById(id);
         var total = document.getElementById("total");
+        document.getElementById('progressunit').style.display = "";
         progressbar.style.width=parseInt(progressbar.style.width) + 1 + "%";
         total.innerHTML = progressbar.style.width;
         if(progressbar.style.width == "100%"){
@@ -10,11 +11,8 @@
             document.getElementById('progressunit').style.display = "none";
             return;
         }
-        var timeout=window.setTimeout("run()",100);
+        var timeout=window.setTimeout("run("+id+")",100);
     }
-    //    window.onload = function(){
-    //        run();
-    //    }
 </script>
 
 <div class="box-content">
@@ -49,7 +47,7 @@
                         <i class="glyphicon glyphicon-edit icon-white"></i>
                         编辑
                     </a>
-                    <a class="btn btn-danger" href="predict/$!cm.id" onclick="run()">
+                    <a class="btn btn-danger" href="predict/$!cm.id" onclick="run($!cm.id)">
                         <i class="glyphicon glyphicon-trash icon-white"></i>
                         预测
                     </a>
@@ -59,14 +57,17 @@
                     </a>
                 </td>
             </tr>
-            <tr>
-                <div id="progressunit"style="display: none">
+
+            <tr id="progressunit" style="display: none">
+                <td colspan="7">
+                <div>
                     <span id="total"></span>
                     <div class="progress sm progress-striped active">
-                        <div id="progressbar" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
+                        <div id="$!cm.id" class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 0%">
                         </div>
                     </div>
                 </div>
+                </td>
             </tr>
             #end
         </tbody>
