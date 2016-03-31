@@ -58,7 +58,7 @@
     <mvc:resources location="/jquery/" mapping="/jquery/**"/>
     <mvc:resources location="/charisma/" mapping="/charisma/**"/>
     <mvc:resources location="/uploadify/" mapping="/uploadify/**"/>
-
+    <mvc:resources location="/dropzone/" mapping="/dropzone/**"/>
 
     <!-- 引入jdbc配置文件 -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">

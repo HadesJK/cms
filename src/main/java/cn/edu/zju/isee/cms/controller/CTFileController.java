@@ -35,6 +35,9 @@ public class CTFileController {
         return "upload/upload";
     }
 
+    @RequestMapping("uploadMultiple")
+    public String fileUpload2() { return "upload/uploadMultiple";}
+
     @RequestMapping(value = "filesUpload", produces = "text/html;")
     @ResponseBody
     public String upload(@RequestParam("files") MultipartFile[] files) {
