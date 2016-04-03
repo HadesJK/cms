@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
 ##    <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-    <title>Free HTML5 Bootstrap Admin Template</title>
+    <title>CT辅助诊断系统</title>
 
     <!-- The styles -->
     <link href="${rc.contextPath}/charisma/css/bootstrap-cerulean.min.css" rel="stylesheet">

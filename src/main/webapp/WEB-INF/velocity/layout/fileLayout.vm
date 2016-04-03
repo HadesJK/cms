@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>CT图像上传</title>
+    <title>CT辅助诊断系统</title>
 
     <!-- The styles -->
     <link href="${rc.contextPath}/charisma/css/bootstrap-cerulean.min.css" rel="stylesheet">
@@ -43,7 +43,7 @@
 <body>
 <!-- topbar starts -->
 <div class="navbar navbar-default" role="navigation" style="height: 100px">
-    <p class="navbar-brand" style="font-size: 50px; width: auto;margin-top: 25px">CT图像上传</p>
+    <p class="navbar-brand" style="font-size: 50px; width: auto;margin-top: 25px">CT辅助诊断系统</p>
 </div>
 <!-- topbar ends -->
 <div class="ch-container">
