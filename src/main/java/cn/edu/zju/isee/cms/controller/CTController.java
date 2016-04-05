@@ -87,7 +87,9 @@ public class CTController {
     }
 
     @RequestMapping("/dicomPath/{dicomId}")
-    public void getDicom(@PathVariable int dicomId, HttpServletResponse response) {
+    public String getDicom(@PathVariable int dicomId, Model model, HttpServletResponse response) {
+        model.addAttribute("dicomName", dicomId + ".dcm");
+//        model.addAttribute("dicomUrl", "/dicomPath/" + slideId);
         String fileName = GlobalConstant.JAVA_MATLAB_DIR + dicomId + ".dcm";
         File file = new File(fileName);
         FileInputStream in = null;
@@ -106,7 +108,7 @@ public class CTController {
             e.printStackTrace();
         }
 
-        return;
+        return "ctlist/dicomView";
     }
 
 }
