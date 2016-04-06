@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.FileInputStream;
@@ -79,17 +80,17 @@ public class CTController {
     }
 
     @RequestMapping("/dicomView/{slideId}")
-    public String ctDicomView(@PathVariable int slideId, Model model){
+    public String ctDicomView(@PathVariable int slideId, Model model, HttpServletRequest request){
         model.addAttribute("dicomName", slideId + ".dcm");
-        model.addAttribute("dicomUrl", "/dicomPath/" + slideId);
+        StringBuffer path = request.getRequestURL();
+        String realPath = path.substring(0,path.indexOf("d"));
+        model.addAttribute("dicomUrl", realPath + "dicomPath/" + slideId);
 //        model.addAttribute("dicomUrl", "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2413511449,3739465490&fm=116&gp=0.jpg");//GlobalConstant.JAVA_MATLAB_DIR + slideId + ".dcm");
         return "ctlist/dicomView";
     }
 
     @RequestMapping("/dicomPath/{dicomId}")
-    public String getDicom(@PathVariable int dicomId, Model model, HttpServletResponse response) {
-        model.addAttribute("dicomName", dicomId + ".dcm");
-//        model.addAttribute("dicomUrl", "/dicomPath/" + slideId);
+    public void getDicom(@PathVariable int dicomId, HttpServletResponse response) {
         String fileName = GlobalConstant.JAVA_MATLAB_DIR + dicomId + ".dcm";
         File file = new File(fileName);
         FileInputStream in = null;
@@ -108,7 +109,7 @@ public class CTController {
             e.printStackTrace();
         }
 
-        return "ctlist/dicomView";
+        return;
     }
 
 }
