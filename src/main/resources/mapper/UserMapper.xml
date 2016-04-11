@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.zju.isee.cms.mapper.UserMapper" >
+    <resultMap id="BaseResultMap" type="cn.edu.zju.isee.cms.entity.User" >
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="userName" property="userName" jdbcType="VARCHAR" />
+        <result column="passWord" property="passWord" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="INTEGER" />
+        <result column="upload" property="upload" jdbcType="TINYINT" />
+        <result column="download" property="download" jdbcType="TINYINT" />
+        <result column="importData" property="importData" jdbcType="TINYINT" />
+        <result column="checkData" property="checkData" jdbcType="TINYINT" />
+        <result column="deleteData" property="deleteData" jdbcType="TINYINT" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        id, userName, passWord, status, upload, download, importData, checkData,  deleteData
+    </sql>
+
+    <insert id="insert" parameterType="cn.edu.zju.isee.cms.entity.User" useGeneratedKeys="true" keyProperty="id" >
+        insert into user        <trim prefix="(" suffix=")" suffixOverrides="," >
+        <!--<if test="id != null" >-->
+        <!--id,-->
+        <!--</if>-->
+        <if test="userName != null" >
+            userName,
+        </if>
+        <if test="passWord != null" >
+            passWord,
+        </if>
+        <if test="status != null" >
+            status,
+        </if>
+        <if test="upload != null" >
+            upload,
+        </if>
+        <if test="download != null" >
+            download,
+        </if>
+        <if test="importData != null" >
+            importData,
+        </if>
+        <if test="checkData != null" >
+            checkData,
+        </if>
+        <if test="deleteData != null" >
+            deleteData,
+        </if>
+    </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <!--<if test="id != null" >-->
+            <!--#{id,jdbcType=INTEGER},-->
+            <!--</if>-->
+            <if test="userName != null" >
+                #{userName,jdbcType=INTEGER},
+            </if>
+            <if test="passWord != null" >
+                #{passWord,jdbcType=TIMESTAMP},
+            </if>
+            <if test="status != null" >
+                #{status,jdbcType=VARCHAR},
+            </if>
+            <if test="upload != null" >
+                #{upload,jdbcType=VARCHAR},
+            </if>
+            <if test="download != null" >
+                #{download,jdbcType=VARCHAR},
+            </if>
+            <if test="importData != null" >
+                #{importData,jdbcType=VARCHAR},
+            </if>
+            <if test="checkData != null" >
+                #{checkData,jdbcType=VARCHAR},
+            </if>
+            <if test="deleteData != null" >
+                #{deleteData,jdbcType=VARCHAR},
+            </if>
+
+        </trim>
+    </insert>
+
+    <select id="selectById" resultType="cn.edu.zju.isee.cms.entity.User" parameterType="java.lang.Integer">
+        SELECT * FROM user WHERE id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectByUserName" resultType="cn.edu.zju.isee.cms.entity.User" parameterType="java.lang.String">
+        SELECT * FROM user WHERE userName = #{userName,jdbcType=INTEGER}
+    </select>
+</mapper>

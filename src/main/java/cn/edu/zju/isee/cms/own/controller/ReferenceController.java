@@ -1,7 +1,7 @@
 package cn.edu.zju.isee.cms.own.controller;
 
 import cn.edu.zju.isee.cms.own.pojo.Book;
-import cn.edu.zju.isee.cms.own.pojo.User;
+import cn.edu.zju.isee.cms.own.pojo.ReferenceUser;
 import org.apache.commons.io.FileUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,21 +26,21 @@ import java.util.concurrent.ConcurrentMap;
  */
 @Controller
 @RequestMapping("/user")
-public class UserController {
-    private ConcurrentMap<String, User> users = new ConcurrentHashMap<String, User>(8);
+public class ReferenceController {
+    private ConcurrentMap<String, ReferenceUser> users = new ConcurrentHashMap<String, ReferenceUser>(8);
 
 //    @Resource
 //    private TestDao dao;
 
-    public UserController() {
-        users.putIfAbsent("jql", new User("jql", "lqj"));
-        users.putIfAbsent("syx", new User("syx", "xys"));
+    public ReferenceController() {
+        users.putIfAbsent("jql", new ReferenceUser("jql", "lqj"));
+        users.putIfAbsent("syx", new ReferenceUser("syx", "xys"));
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String list(Model model) {
 //        Test entity = dao.getById(1);
-        User x = new User("x", "ql");
+        ReferenceUser x = new ReferenceUser("x", "ql");
         List<Book> books = x.getBooks();
         for (int i =0; i < 6; i ++) {
             books.add(new Book("hades" + i, i * 0.3));
@@ -67,7 +67,7 @@ public class UserController {
         System.out.println(realPath);
         File file = new File(realPath + "/" + attach.getOriginalFilename());
         FileUtils.copyInputStreamToFile(attach.getInputStream(), file);
-        users.put(username, new User(username, password));
+        users.put(username, new ReferenceUser(username, password));
         return "redirect:/user/users";
     }
 
@@ -87,14 +87,14 @@ public class UserController {
 
     @RequestMapping(value = "/{username}/update", method = RequestMethod.POST)
     public String update(String username, String password) {
-        users.put(username, new User(username, password));
+        users.put(username, new ReferenceUser(username, password));
         return "redirect:/user/users";
     }
 
     //返回json
     @RequestMapping(value = "/{username}", method = RequestMethod.GET, params = "json")
     @ResponseBody
-    public User showUser(@PathVariable String username) {
+    public ReferenceUser showUser(@PathVariable String username) {
         System.out.println("return json data.");
         return users.get(username);
     }

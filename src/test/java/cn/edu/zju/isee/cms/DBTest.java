@@ -2,8 +2,10 @@ package cn.edu.zju.isee.cms;
 
 import cn.edu.zju.isee.cms.entity.CT;
 import cn.edu.zju.isee.cms.entity.CTSlide;
+import cn.edu.zju.isee.cms.entity.User;
 import cn.edu.zju.isee.cms.mapper.CTMapper;
 import cn.edu.zju.isee.cms.mapper.CTSlideMapper;
+import cn.edu.zju.isee.cms.mapper.UserMapper;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -33,7 +35,7 @@ public class DBTest {
         ct.setBaseDir("test");
         ct.setBuildTime(new Date(0));
         ct.setDescr("test");
-        ct.setDoctors("test");
+        ct.setDoctorName("test");
         ct.setHospital("test");
 //        ct.setId(124);
         ct.setItem("test");
@@ -69,7 +71,7 @@ public class DBTest {
 //        ct.setBaseDir("test");
         ct.setBuildTime(new Date(86400000));
         ct.setDescr("test001");
-        ct.setDoctors("test002");
+        ct.setDoctorName("test002");
         ct.setHospital("test003");
         ct.setId(147);
         ct.setItem("test004");
@@ -130,5 +132,26 @@ public class DBTest {
         ctSlide.setCtId(136);
         CTSlideMapper ctSlideMapper = applicationContext.getBean(CTSlideMapper.class);
         ctSlideMapper.updateById(ctSlide);
+    }
+
+    @Test
+    public void testUserSelectById(){
+        UserMapper userMapper = applicationContext.getBean(UserMapper.class);
+        User user = userMapper.selectById(1);
+        System.out.println(user.getId() + user.getPassWord() + user.getUserName());
+    }
+
+    @Test
+    public void testUserInsert(){
+        User user = new User();
+        user.setCheckData(true);
+        user.setDownload(true);
+        user.setPassWord("111111");
+        user.setStatus(2);
+        user.setUpload(true);
+        user.setUserName("Bob");
+        UserMapper userMapper = applicationContext.getBean(UserMapper.class);
+        System.out.println(userMapper.insert(user));
+        System.out.println(user.getId());
     }
 }

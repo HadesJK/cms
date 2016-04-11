@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * User
+ * ReferenceUser
  *
  * @author 一饭
  * @date 15/6/29 下午7:26
  */
-public class User {
+public class ReferenceUser {
     private String username;
     private String password;
     private List<Book> books;
 
-    public User() {
+    public ReferenceUser() {
     }
 
-    public User(String username, String password) {
+    public ReferenceUser(String username, String password) {
         this.username = username;
         this.password = password;
         books = new ArrayList<Book>(8);
