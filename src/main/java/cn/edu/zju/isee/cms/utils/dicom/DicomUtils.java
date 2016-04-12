@@ -54,10 +54,12 @@ public class DicomUtils {
     }
 
     public static void main(String[] args) {
-        String rootDir = "D:\\min\\lidc-min";
+//        String rootDir = "D:\\min\\lidc-min";
+        String rootDir = "D:\\PRSL\\PRSL-20090113\\";
         List<String> list = getDicomList(new File(rootDir), new ArrayList<>());
         for (String fileName : list) {
-            String subStr = fileName.replace("lidc-min", "lidc-min-jpgs");
+//            String subStr = fileName.replace("lidc-min", "lidc-min-jpgs");
+            String subStr = fileName.replace("PRSL-20090113", "PRSL-20090113-JPGS");
             System.out.println("@@@@######" + subStr);
             dicomToJpg(fileName, subStr + ".jpg");
         }
