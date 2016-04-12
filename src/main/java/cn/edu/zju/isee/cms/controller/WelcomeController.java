@@ -1,4 +1,4 @@
-package cn.edu.zju.isee.cms.controller.model;
+package cn.edu.zju.isee.cms.controller;
 
 import cn.edu.zju.isee.cms.entity.User;
 import org.springframework.stereotype.Controller;
