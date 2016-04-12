@@ -39,11 +39,17 @@
             <if test="zipName != null" >
                 zipName,
             </if>
+            <if test="patientId != null" >
+                patientId,
+            </if>
             <if test="patientName != null" >
                 patientName,
             </if>
-            <if test="doctors != null" >
-                doctors,
+            <if test="doctorId != null" >
+                doctorId,
+            </if>
+            <if test="doctorName != null" >
+                doctorName,
             </if>
             <if test="descr != null" >
                 descr,
@@ -77,11 +83,17 @@
             <if test="zipName != null" >
                 #{zipName,jdbcType=VARCHAR},
             </if>
+            <if test="patientId != null" >
+                #{patientId,jdbcType=INTEGER},
+            </if>
             <if test="patientName != null" >
                 #{patientName,jdbcType=VARCHAR},
             </if>
-            <if test="doctors != null" >
-                #{doctors,jdbcType=VARCHAR},
+            <if test="doctorId != null" >
+                #{doctorId,jdbcType=INTEGER},
+            </if>
+            <if test="doctorName != null" >
+                #{doctorName,jdbcType=VARCHAR},
             </if>
             <if test="descr != null" >
                 #{descr,jdbcType=VARCHAR},
@@ -127,11 +139,17 @@
         <if test="zipName != null" >
             zipName = #{zipName,jdbcType=VARCHAR},
         </if>
+        <if test="patientId != null" >
+            patientId = #{patientId,jdbcType=INTEGER},
+        </if>
         <if test="patientName != null" >
             patientName = #{patientName,jdbcType=VARCHAR},
         </if>
-        <if test="doctors != null" >
-            doctors = #{doctors,jdbcType=VARCHAR},
+        <if test="doctorId != null" >
+            doctorId = #{doctorId,jdbcType=INTEGER},
+        </if>
+        <if test="doctorName != null" >
+            doctorName = #{doctorName,jdbcType=VARCHAR},
         </if>
         <if test="descr != null" >
             descr = #{descr,jdbcType=VARCHAR},

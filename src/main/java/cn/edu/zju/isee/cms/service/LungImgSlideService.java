@@ -50,8 +50,10 @@ public class LungImgSlideService {
                 ct.setBaseDir(GlobalConstant.DICOM_ZHEYI_LUNG + dir);
                 ct.setZipDir(dir);
                 ct.setZipName(name);
+                ct.setPatientId(null);
                 ct.setPatientName(null);
-                ct.setDoctors(null);
+                ct.setDoctorId(null);
+                ct.setDoctorName(null);
                 ct.setDescr(null);
                 ct.setHospital(null);
                 ct.setItem("肺结节");

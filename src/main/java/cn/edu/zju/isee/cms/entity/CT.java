@@ -13,8 +13,10 @@ public class CT {
     private String zipDir;
     private String jpgDir;
     private String zipName;
+    private Integer patientId;
     private String patientName;
-    private String doctors;
+    private Integer doctorId;
+    private String doctorName;
     private String descr;
     private String hospital;
     private String item;
@@ -51,6 +53,38 @@ public class CT {
         this.baseDir = baseDir;
     }
 
+    public String getZipDir() {
+        return zipDir;
+    }
+
+    public void setZipDir(String zipDir) {
+        this.zipDir = zipDir;
+    }
+
+    public String getJpgDir() {
+        return jpgDir;
+    }
+
+    public void setJpgDir(String jpgDir) {
+        this.jpgDir = jpgDir;
+    }
+
+    public String getZipName() {
+        return zipName;
+    }
+
+    public void setZipName(String zipName) {
+        this.zipName = zipName;
+    }
+
+    public Integer getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Integer patientId) {
+        this.patientId = patientId;
+    }
+
     public String getPatientName() {
         return patientName;
     }
@@ -59,12 +93,20 @@ public class CT {
         this.patientName = patientName;
     }
 
-    public String getDoctors() {
-        return doctors;
+    public Integer getDoctorId() {
+        return doctorId;
     }
 
-    public void setDoctors(String doctors) {
-        this.doctors = doctors;
+    public void setDoctorId(Integer doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 
     public String getDescr() {
@@ -89,29 +131,5 @@ public class CT {
 
     public void setItem(String item) {
         this.item = item;
-    }
-
-    public String getZipDir() {
-        return zipDir;
-    }
-
-    public void setZipDir(String zipDir) {
-        this.zipDir = zipDir;
-    }
-
-    public String getJpgDir() {
-        return jpgDir;
-    }
-
-    public void setJpgDir(String jpgDir) {
-        this.jpgDir = jpgDir;
-    }
-
-    public String getZipName() {
-        return zipName;
-    }
-
-    public void setZipName(String zipName) {
-        this.zipName = zipName;
     }
 }
