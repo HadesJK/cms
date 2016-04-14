@@ -3,6 +3,7 @@ package cn.edu.zju.isee.cms.utils.dicom;
 /**
  * Created by jql on 2016/4/11.
  */
+import cn.edu.zju.isee.cms.utils.file.FileUtils;
 import com.sun.image.codec.jpeg.JPEGCodec;
 import com.sun.image.codec.jpeg.JPEGImageEncoder;
 import org.dcm4che3.imageio.plugins.dcm.DicomMetaData;
@@ -80,7 +81,7 @@ public class DicomUtils {
     public static void main(String[] args) {
 
         String rootDir = "D:\\min\\lidc-min\\";
-        List<String> list = getDicomList(new File(rootDir), new ArrayList<>());
+        List<String> list = FileUtils.getFileList(new File(rootDir), new ArrayList<>(), ".dcm");
         for (String fileName : list) {
             String subStr = fileName.replace("lidc-min", "lidc-min-jpgs");
             System.out.println("@@@@######" + subStr);
@@ -88,19 +89,7 @@ public class DicomUtils {
         }
     }
 
-    private static List<String> getDicomList(File parentDir, List<String> list) {
-        File[] files = parentDir.listFiles();
 
-        for (File file : files) {
-            if (file.isFile() && file.getName().endsWith(".dcm")) {
-                System.out.println(file.getAbsoluteFile());
-                list.add(file.getAbsolutePath());
-            } else if (file.isDirectory()) {
-                getDicomList(file, list);
-            }
-        }
-        return list;
-    }
 
 
 //    public static void convert(String file) {
