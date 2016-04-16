@@ -13,7 +13,7 @@ import java.util.*;
 
 public class RoiUtils {
     private final static int len = 512; // 图片是 512*512
-    private final static int less = 16; // 小于这个值的认为是小血管，去除假阳性的第一步
+    private final static int less = 32; // 小于这个值的认为是小血管，去除假阳性的第一步
     private final static int patchSize = 40;    // patch size，用于CNN
     private static int count;
     private static int[][] num = new int[len][len];
@@ -166,7 +166,7 @@ public class RoiUtils {
     }
 
     public static void main(String[] args) {
-        String rootDir = "D:\\min\\lidc-min-jpgs\\";
+        String rootDir = "/run/media/root/d9cfb292-d889-4b63-b220-d81968d410c3/lidc/kaola/lidc-min-over";
         List<String> list = FileUtils.getFileList(new File(rootDir), new ArrayList<>(), ".jpg.txt");
         for (String fileName : list) {
             process(fileName);

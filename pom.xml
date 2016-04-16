@@ -36,7 +36,7 @@
                     <source>1.8</source>
                     <target>1.8</target>
                     <compilerArguments>
-                        <bootclasspath>${java.home}/lib/rt.jar;${java.home}/lib/jce.jar</bootclasspath>
+                        <bootclasspath>${java.home}/lib/rt.jar:${java.home}/lib/jce.jar</bootclasspath>
                     </compilerArguments>
                 </configuration>
             </plugin>
@@ -241,11 +241,11 @@
             <artifactId>dcm4che-audit</artifactId>
             <version>${dcm4che.version}</version>
         </dependency>
-        <dependency>
-            <groupId>org.dcm4che</groupId>
-            <artifactId>dcm4che-conf</artifactId>
-            <version>${dcm4che.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.dcm4che</groupId>-->
+            <!--<artifactId>dcm4che-conf</artifactId>-->
+            <!--<version>${dcm4che.version}</version>-->
+        <!--</dependency>-->
         <!-- end -->
 
         <dependency>

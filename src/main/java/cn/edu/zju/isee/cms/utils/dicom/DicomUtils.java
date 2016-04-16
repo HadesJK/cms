@@ -54,9 +54,9 @@ public class DicomUtils {
                 e.printStackTrace();
             }
             if (!saveName.endsWith(".jpg")) {
-                int index = saveName.lastIndexOf("\\");
+                int index = saveName.lastIndexOf("/");
                 saveName = saveName.substring(0, index);
-                saveName = saveName + "\\" + df.format(slicePosition) + ".jpg";
+                saveName = saveName + "/" + df.format(slicePosition) + ".jpg";
             } else {
                 System.err.println("请注意文件名。");
             }
@@ -80,7 +80,7 @@ public class DicomUtils {
 
     public static void main(String[] args) {
 
-        String rootDir = "D:\\min\\lidc-min\\";
+        String rootDir = "/run/media/root/d9cfb292-d889-4b63-b220-d81968d410c3/lidc/kaola/lidc-min";
         List<String> list = FileUtils.getFileList(new File(rootDir), new ArrayList<>(), ".dcm");
         for (String fileName : list) {
             String subStr = fileName.replace("lidc-min", "lidc-min-jpgs");
