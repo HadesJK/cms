@@ -15,6 +15,8 @@ public class RecogModel {
     private static final String XJJ = "小结节";
     private static final String NOR = "正常";
 
+    private int ctId;
+    private int slideId;
     private int serialNum;
     private String pic;
     private String label;
@@ -34,6 +36,8 @@ public class RecogModel {
                 val[j] = Double.parseDouble(valStr[j]);
             }
             RecogModel model = new RecogModel();
+            model.ctId = slide.getCtId();
+            model.slideId = slide.getId();
             model.serialNum = slide.getSerialNum();
             model.pic = "sorry @mch";
             model.label = getLabel(val);
@@ -69,6 +73,22 @@ public class RecogModel {
         sb.append("      正常：");
         sb.append(df.format(newValue[2] + newValue[3]));
         return sb.toString();
+    }
+
+    public int getCtId() {
+        return ctId;
+    }
+
+    public void setCtId(int ctId) {
+        this.ctId = ctId;
+    }
+
+    public int getSlideId() {
+        return slideId;
+    }
+
+    public void setSlideId(int slideId) {
+        this.slideId = slideId;
     }
 
     public int getSerialNum() {

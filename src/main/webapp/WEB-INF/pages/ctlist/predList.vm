@@ -12,7 +12,7 @@
         #foreach($pred in $preds)
         <tr>
             <td>$!pred.serialNum</td>
-            <td><a href="${rc.contextPath}/dicomView/$!pred.serialNum" target="_blank">$!pred.pic</a></td>
+            <td><a href="${rc.contextPath}/dicomView/$!pred.ctId/$!pred.slideId" target="_blank">查看dicom图像</a></td>
             <td>$!pred.label</td>
             <td>$!pred.probably</td>
         </tr>

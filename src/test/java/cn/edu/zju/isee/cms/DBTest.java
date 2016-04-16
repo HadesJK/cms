@@ -105,14 +105,14 @@ public class DBTest {
         }
     }
 
-    @Test
-    public void testCTSlideSelectById(){
-        CTSlideMapper ctSlideMapper = applicationContext.getBean(CTSlideMapper.class);
-        List<CTSlide> ctSlideList = ctSlideMapper.selectById(100);
-        for(CTSlide ctSlide : ctSlideList){
-            System.out.println(ctSlide.getSlideName());
-        }
-    }
+//    @Test
+//    public void testCTSlideSelectById(){
+//        CTSlideMapper ctSlideMapper = applicationContext.getBean(CTSlideMapper.class);
+//        List<CTSlide> ctSlideList = ctSlideMapper.selectById(100);
+//        for(CTSlide ctSlide : ctSlideList){
+//            System.out.println(ctSlide.getSlideName());
+//        }
+//    }
 
     @Test
     public void testCTSlideSelectByCtId(){

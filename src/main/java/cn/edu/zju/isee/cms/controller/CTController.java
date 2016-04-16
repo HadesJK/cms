@@ -4,6 +4,7 @@ import cn.edu.zju.isee.cms.GlobalConstant;
 import cn.edu.zju.isee.cms.controller.model.RecogModel;
 import cn.edu.zju.isee.cms.entity.CT;
 import cn.edu.zju.isee.cms.entity.CTSlide;
+import cn.edu.zju.isee.cms.service.CTImageFileService;
 import cn.edu.zju.isee.cms.service.LungCTImgService;
 import cn.edu.zju.isee.cms.service.LungImgSlideService;
 import org.apache.velocity.tools.generic.DateTool;
@@ -15,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.List;
 
 /**
@@ -31,6 +30,9 @@ public class CTController {
 
     @Resource
     private LungImgSlideService slideService;
+
+    @Resource
+    private CTImageFileService imageFileService;
 
     @RequestMapping("/list")
     public String getList(Model model) {
@@ -79,24 +81,24 @@ public class CTController {
         return msg;
     }
 
-    @RequestMapping("/dicomView/{slideId}")
-    public String ctDicomView(@PathVariable int slideId, Model model, HttpServletRequest request){
-        model.addAttribute("dicomName", slideId + ".dcm");
+    @RequestMapping("/dicomView/{ctId}/{slideId}")
+    public String ctDicomView(@PathVariable int ctId, @PathVariable int slideId, Model model, HttpServletRequest request){
+        model.addAttribute("slideId", slideId);
+        model.addAttribute("ctId", ctId);
         StringBuffer path = request.getRequestURL();
         String realPath = path.substring(0,path.indexOf("d"));
-        model.addAttribute("dicomUrl", realPath + "dicomPath/" + slideId);
+        model.addAttribute("dicomUrl", realPath + "dicomPath/" + ctId + "/" + slideId);
 //        model.addAttribute("dicomUrl", "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2413511449,3739465490&fm=116&gp=0.jpg");//GlobalConstant.JAVA_MATLAB_DIR + slideId + ".dcm");
         return "ctlist/dicomView";
     }
 
-    @RequestMapping("/dicomPath/{dicomId}")
-    public void getDicom(@PathVariable int dicomId, HttpServletResponse response) {
-        String fileName = GlobalConstant.JAVA_MATLAB_DIR + dicomId + ".dcm";
-        File file = new File(fileName);
-        FileInputStream in = null;
+    @RequestMapping("/dicomPath/{ctId}/{slideId}")
+    public void getDicom(@PathVariable int ctId, @PathVariable int slideId, HttpServletResponse response) {
+        InputStream in = null;
+        OutputStream o = null;
         try {
-            in = new FileInputStream(file);
-            OutputStream o = response.getOutputStream();
+            in = new BufferedInputStream(imageFileService.getCtImage(slideId));
+            o = response.getOutputStream();
             int l = 0;
             byte[] buffer = new byte[4096];
             while((l = in.read(buffer)) != -1){
@@ -107,9 +109,22 @@ public class CTController {
             o.close();
         } catch (java.io.IOException e) {
             e.printStackTrace();
+        } finally {
+            if (in != null) {
+                try {
+                    in.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (o != null) {
+                try {
+                    o.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
-
-        return;
     }
 
 }

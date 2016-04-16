@@ -109,7 +109,7 @@
         <!-- Open file -->
         <div class="openData" title="File">
             <div class="loaderlist">
-                <p>DICOM File:$dicomName</p>
+                <p>DICOM File:小马</p>
 ##                <div class="imageurldiv">
 ##                    <input type="url" multiple="" class="imagefile" data-clear-btn="true" data-mini="true" value="">
 ##                </div>

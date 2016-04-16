@@ -11,7 +11,7 @@ public interface CTSlideMapper {
 
     int insert(CTSlide ctSlide);
     List<Integer> selectAllIds();
-    List<CTSlide> selectById(int id);
+    CTSlide selectById(int id);
     List<CTSlide> selectByCtId(int ctId);
     void updateById(CTSlide ctSlide);
 
