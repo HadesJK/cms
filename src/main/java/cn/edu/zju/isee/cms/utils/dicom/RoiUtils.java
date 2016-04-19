@@ -1,7 +1,7 @@
 package cn.edu.zju.isee.cms.utils.dicom;
 
 /**
- * Created by jql on 2016/4/13.
+ * Created by zhyc&pdx&jql on 2016/4/13.
  */
 
 import cn.edu.zju.isee.cms.utils.file.FileUtils;

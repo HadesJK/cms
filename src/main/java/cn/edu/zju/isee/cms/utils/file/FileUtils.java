@@ -1,8 +1,11 @@
 package cn.edu.zju.isee.cms.utils.file;
 
+import com.sun.deploy.net.proxy.pac.PACFunctions;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -53,5 +56,9 @@ public class FileUtils {
             }
         }
         return list;
+    }
+
+    public static List<String> getFileList(File parentDir,String fileType) {
+        return getFileList(parentDir, new ArrayList<>(), fileType.toLowerCase());
     }
 }
