@@ -21,6 +21,8 @@ public class DicomMark {
     private static final String SRC_PATH = "D:\\min\\lidc-min";
     private static final String MK_PATH = "D:\\min\\lidc-min-mark";
 
+    private static DecimalFormat df = new DecimalFormat("######000.00");
+
     public static void mark() {
         Document dom;
         List<String> fileNameList = FileUtils.getFileList(new File(SRC_PATH), ".xml");
@@ -81,7 +83,7 @@ public class DicomMark {
         while (!roiMap.isEmpty()){
             try {
                 Roi roi = roiMap.pollFirstEntry().getKey();
-                File file = new File(dir, roi.getZ() + ".mk");
+                File file = new File(dir, df.format(Math.abs(Double.parseDouble(roi.getZ()))) + ".mk");
                 if (!file.getParentFile().exists()) {
                     file.getParentFile().mkdirs();
                 }
@@ -101,7 +103,6 @@ public class DicomMark {
 
     public static void scale() throws IOException {
         List<String> fileNameList = FileUtils.getFileList(new File(MK_PATH), ".mk");
-        DecimalFormat df = new DecimalFormat("######000.00");
 
         for (String name : fileNameList) {
             BufferedReader reader = null;
@@ -129,7 +130,7 @@ public class DicomMark {
                 File result = new File(file.getParent(), "rst.edge");
                 writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(result, true)));
                 String zPos = df.format(Math.abs(Double.parseDouble(file.getName().replace(".mk", ""))));
-                writer.write(zPos + "," + xMin + "," + xMax + "," + yMin + "," + yMax);
+                writer.write(zPos + ".jpg" + " " + xMin + " " + xMax + " " + yMin + " " + yMax);
                 writer.newLine();
             } finally {
                 if (writer != null) {
