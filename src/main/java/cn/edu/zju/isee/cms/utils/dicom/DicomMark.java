@@ -18,8 +18,8 @@ import java.util.TreeMap;
  * Created by ljy&jql on 2016/4/14.
  */
 public class DicomMark {
-    private static final String SRC_PATH = "D:\\min\\lidc-min";
-    private static final String MK_PATH = "D:\\min\\lidc-min-mark";
+    private static final String SRC_PATH = "/run/media/root/d9cfb292-d889-4b63-b220-d81968d410c3/lidc/kaola/lidc-min";
+    private static final String MK_PATH = "/run/media/root/d9cfb292-d889-4b63-b220-d81968d410c3/lidc/kaola/lidc-min-mark";
 
     private static DecimalFormat df = new DecimalFormat("######000.00");
 
