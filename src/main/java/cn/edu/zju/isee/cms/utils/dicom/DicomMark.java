@@ -1,15 +1,14 @@
 package cn.edu.zju.isee.cms.utils.dicom;
 
+import cn.edu.zju.isee.cms.utils.file.FileUtils;
 import org.dom4j.Document;
 import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.MalformedURLException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Stack;
@@ -19,39 +18,30 @@ import java.util.TreeMap;
  * Created by ljy&jql on 2016/4/14.
  */
 public class DicomMark {
-    public static final String SRC_PATH = "E:\\src\\";
-    public static final String DEST_PATH = "E:\\dest\\";
-    public static void main(String[] args) throws IOException {
-        File srcRoot = new File(SRC_PATH);
-        File[] srcFiles = srcRoot.listFiles();
+    private static final String SRC_PATH = "D:\\min\\lidc-min";
+    private static final String MK_PATH = "D:\\min\\lidc-min-mark";
+
+    public static void mark() {
         Document dom;
-        BufferedWriter writer = null;
-        TreeMap<Roi, Object> roiMap;
-        for (File src : srcFiles){
+        List<String> fileNameList = FileUtils.getFileList(new File(SRC_PATH), ".xml");
+        for (String name : fileNameList){
+            System.out.println("处理文件：" + name);
+            File file = new File(name);
             try {
-                dom = getDocument(src);
-                writer = new BufferedWriter(new FileWriter((DEST_PATH + src.getName()), true));
-                roiMap = new TreeMap<Roi, Object>();
+                dom = getDocument(file);
+                TreeMap<Roi, Object> roiMap = new TreeMap<>();
                 Element root = dom.getRootElement();
                 dfs(root, "roi", roiMap);
-                writeRois(roiMap, writer);
-            } catch (DocumentException e) {
+                writeRois(roiMap, file.getParentFile().getAbsolutePath().replace("lidc-min", "lidc-min-mark"));
+            } catch (DocumentException | IOException e) {
                 e.printStackTrace();
-                System.out.println(src.getName() + " : failed");
-                continue;
-            } finally {
-                if (writer != null){
-                    writer.flush();
-                    writer.close();
-                }
             }
         }
     }
 
     public static Document getDocument(File file) throws DocumentException, MalformedURLException {
         SAXReader sr = new SAXReader();
-        Document document = sr.read(file);
-        return document;
+        return sr.read(file);
     }
 
     public static void handleRoi(Element roi, TreeMap<Roi, Object> roiMap) throws IOException {
@@ -86,47 +76,89 @@ public class DicomMark {
         }
     }
 
-    public static void writeRois(TreeMap<Roi, Object> roiMap, BufferedWriter writer) throws IOException {
+    public static void writeRois(TreeMap<Roi, Object> roiMap, String dir) throws IOException {
+        BufferedWriter writer = null;
         while (!roiMap.isEmpty()){
-            Roi roi = roiMap.pollFirstEntry().getKey();
-            writer.write(roi.getZ());
-            writer.newLine();
-            List<Roi.EdgeMap> edgeMaps = roi.getEdgeMaps();
-            for (Roi.EdgeMap edgeMap : edgeMaps){
-                writer.write(edgeMap.getX() + "," + edgeMap.getY());
-                writer.newLine();
+            try {
+                Roi roi = roiMap.pollFirstEntry().getKey();
+                File file = new File(dir, roi.getZ() + ".mk");
+                if (!file.getParentFile().exists()) {
+                    file.getParentFile().mkdirs();
+                }
+                writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file)));
+                List<Roi.EdgeMap> edgeMaps = roi.getEdgeMaps();
+                for (Roi.EdgeMap edgeMap : edgeMaps) {
+                    writer.write(edgeMap.getX() + "," + edgeMap.getY());
+                    writer.newLine();
+                }
+            } finally {
+                if (writer != null) {
+                    writer.close();
+                }
             }
         }
+    }
+
+    public static void scale() throws IOException {
+        List<String> fileNameList = FileUtils.getFileList(new File(MK_PATH), ".mk");
+        DecimalFormat df = new DecimalFormat("######000.00");
+
+        for (String name : fileNameList) {
+            BufferedReader reader = null;
+            BufferedWriter writer = null;
+            int xMin = 512;
+            int xMax = 1;
+            int yMin = 512;
+            int yMax = 1;
+            try {
+                File file = new File(name);
+                reader = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    if (line.trim().length() == 0) {
+                        continue;
+                    }
+                    String[] xyStr = line.split(",");
+                    int x = Integer.parseInt(xyStr[0]);
+                    int y = Integer.parseInt(xyStr[1]);
+                    xMin = xMin > x ? x : xMin;
+                    xMax = xMax < x ? x : xMax;
+                    yMin = yMin > y ? y : yMin;
+                    yMax = yMax < y ? y : yMax;
+                }
+                File result = new File(file.getParent(), "rst.edge");
+                writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(result, true)));
+                String zPos = df.format(Math.abs(Double.parseDouble(file.getName().replace(".mk", ""))));
+                writer.write(zPos + "," + xMin + "," + xMax + "," + yMin + "," + yMax);
+                writer.newLine();
+            } finally {
+                if (writer != null) {
+                    try {
+                        writer.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (reader != null) {
+                    try {
+                        reader.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        // find roi in label xml
+        mark();
+        // find x-min x-max y-min y-max
+        scale();
     }
 }
 
 class Roi implements Comparable{
-    class EdgeMap{
-        private String x;
-        private String y;
-
-        public EdgeMap(){}
-        public EdgeMap(String x, String y){
-            this.x = x;
-            this.y = y;
-        }
-
-        public String getX() {
-            return x;
-        }
-
-        public void setX(String x) {
-            this.x = x;
-        }
-
-        public String getY() {
-            return y;
-        }
-
-        public void setY(String y) {
-            this.y = y;
-        }
-    }
     private String z;
     private List<EdgeMap> edgeMaps;
 
@@ -163,5 +195,35 @@ class Roi implements Comparable{
         double z1 = Double.valueOf(this.z);
         double z2 = Double.valueOf(((Roi)o).getZ());
         return z1 < z2 ? -1 : z1 == z2 ? 0 : 1;
+    }
+
+    class EdgeMap{
+        private String x;
+        private String y;
+
+        public EdgeMap(){
+
+        }
+
+        public EdgeMap(String x, String y){
+            this.x = x;
+            this.y = y;
+        }
+
+        public String getX() {
+            return x;
+        }
+
+        public void setX(String x) {
+            this.x = x;
+        }
+
+        public String getY() {
+            return y;
+        }
+
+        public void setY(String y) {
+            this.y = y;
+        }
     }
 }
