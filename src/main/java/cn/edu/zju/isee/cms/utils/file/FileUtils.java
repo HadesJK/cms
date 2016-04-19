@@ -1,7 +1,5 @@
 package cn.edu.zju.isee.cms.utils.file;
 
-import com.sun.deploy.net.proxy.pac.PACFunctions;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
