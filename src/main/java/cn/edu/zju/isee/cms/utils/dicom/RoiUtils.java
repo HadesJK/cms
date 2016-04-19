@@ -166,7 +166,7 @@ public class RoiUtils {
     }
 
     public static void main(String[] args) {
-        String rootDir = "/run/media/root/d9cfb292-d889-4b63-b220-d81968d410c3/lidc/kaola/lidc-min-over";
+        String rootDir = "/run/media/root/d9cfb292-d889-4b63-b220-d81968d410c3/lidc/kaola/lidc-min-jpgs";
         List<String> list = FileUtils.getFileList(new File(rootDir), new ArrayList<>(), ".jpg.txt");
         for (String fileName : list) {
             process(fileName);
