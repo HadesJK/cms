@@ -1,4 +1,4 @@
-package cn.edu.zju.isee.cms.utils.dicom.inn;//package cn.edu.zju.isee.cms.utils.dicom;
+package cn.edu.zju.isee.cms.utils.dicom.inner;//package cn.edu.zju.isee.cms.utils.dicom;
 
 /**
  * Created by zhyc&pdx&jql on 2016/4/13.
@@ -6,6 +6,7 @@ package cn.edu.zju.isee.cms.utils.dicom.inn;//package cn.edu.zju.isee.cms.utils.
 
 //import cn.edu.zju.isee.cms.utils.file.FileUtils;
 
+import cn.edu.zju.isee.cms.utils.file.FileUtils;
 import javafx.util.Pair;
 
 import java.io.*;
@@ -16,7 +17,7 @@ public class RoiUtils2 {
     private final static int len = 512; // 图片是 512*512
     private final static int less = 32; // 小于这个值的认为是小血管，去除假阳性的第一步
     private final static int patchSize = 64; // patch size，用于CNN
-    private final static int avgThreshold = 300; //区域和大于点数*平均阈值是输出格式为roi，否则为ganrao
+    private final static int avgThreshold = 128; //区域和大于点数*平均阈值是输出格式为roi，否则为ganrao
     private static int areaSum;
     private static int count;
     private static int[][] num = new int[len][len];
@@ -114,7 +115,12 @@ public class RoiUtils2 {
     }
 
     public static void print(File file, String suffix, int len) {
-        String bpatch = file.getAbsolutePath() + "@" + count + suffix;
+        String bpatch = file.getAbsolutePath() + "@" + count;
+        bpatch += "@"+Integer.toString(xmin)+"#"+Integer.toString(ymin);
+        bpatch += "@"+Integer.toString(xmin)+"#"+Integer.toString(ymax);
+        bpatch += "@"+Integer.toString(xmax)+"#"+Integer.toString(ymin);
+        bpatch += "@"+Integer.toString(xmax)+"#"+Integer.toString(ymax);
+        bpatch += suffix;
         try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(new File(bpatch))))) {
             int xlen = xmax - xmin + 1;
             int ylen = ymax - ymin + 1;
@@ -180,8 +186,11 @@ public class RoiUtils2 {
     }
 
     public static void main(String[] args) {
-        String fileName = "F:\\11\\168.25.jpg.txt";
-        process(fileName);
+        String rootDir = "D:\\lung\\result";
+        List<String> list = FileUtils.getFileList(new File(rootDir), new ArrayList<>(), ".jpg.txt");
+        for (String fileName : list) {
+            process(fileName);
+        }
     }
 
     private static class XYPos {
