@@ -1,6 +1,7 @@
 package cn.edu.zju.isee.cms.mapper;
 
 import cn.edu.zju.isee.cms.entity.CTSlide;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,5 +15,6 @@ public interface CTSlideMapper {
     CTSlide selectById(int id);
     List<CTSlide> selectByCtId(int ctId);
     void updateById(CTSlide ctSlide);
+    CTSlide selectByTwo(@Param("ctId") int ctId, @Param("serialNum") int serialNum);
 
 }

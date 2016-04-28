@@ -59,6 +59,7 @@
     <mvc:resources location="/uploadify/" mapping="/uploadify/**"/>
     <mvc:resources location="/dropzone/" mapping="/dropzone/**"/>
     <mvc:resources location="/dwv/" mapping="/dwv/**"/>
+    <mvc:resources location="/imgshow/" mapping="/imgshow/**"/>
 
     <mvc:interceptors>
         <mvc:interceptor>

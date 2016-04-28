@@ -15,7 +15,7 @@
                 <td class="center">待修改</td>
                 <td class="center">待修改</td>
                 <td class="center">
-                    <a class="btn btn-success" href="">
+                    <a class="btn btn-success" href="${rc.contextPath}/autoRecog?ctId=$ctId&serialNum=$!slide.serialNum">
                         <i class="glyphicon glyphicon-zoom-in icon-white"></i>
                         自动识别
                     </a>
