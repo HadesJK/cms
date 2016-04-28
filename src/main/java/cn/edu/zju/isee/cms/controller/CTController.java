@@ -4,6 +4,7 @@ import cn.edu.zju.isee.cms.GlobalConstant;
 import cn.edu.zju.isee.cms.controller.model.RecogModel;
 import cn.edu.zju.isee.cms.entity.CT;
 import cn.edu.zju.isee.cms.entity.CTSlide;
+import cn.edu.zju.isee.cms.mapper.CTSlideMapper;
 import cn.edu.zju.isee.cms.service.CTImageFileService;
 import cn.edu.zju.isee.cms.service.LungCTImgService;
 import cn.edu.zju.isee.cms.service.LungImgSlideService;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -24,6 +26,9 @@ import java.util.List;
  */
 @Controller
 public class CTController {
+
+    @Resource
+    private CTSlideMapper ctSlideMapper;
 
     @Resource
     private LungCTImgService imgService;
@@ -53,7 +58,59 @@ public class CTController {
     public String ctDetails(@PathVariable int ctId, Model model) {
         List<CTSlide> slides = slideService.getCTSlides(ctId);
         model.addAttribute("slides", slides);
+        model.addAttribute("ctId", ctId);
         return "ctlist/slideList";
+    }
+
+    @RequestMapping("/autoRecog")
+    public String autoRecog(HttpServletRequest request, @RequestParam("ctId") int ctId, @RequestParam("serialNum") int serialNum, Model model, HttpServletResponse response){
+
+        model.addAttribute("slideId", serialNum);
+        model.addAttribute("ctId", ctId);
+        StringBuffer path = request.getRequestURL();
+//        String realPath = path.substring(0,path.indexOf("d"));
+        System.out.println(path);
+        model.addAttribute("dicomUrl", path + "/beforeProcessing");
+
+        CTSlide ctSlide = ctSlideMapper.selectByTwo(ctId, serialNum);
+        System.out.println(ctId + " " + serialNum + " " + ctSlide.getSlideName());
+        return "ctlist/autoRecog";
+    }
+
+    @RequestMapping("/autoRecog/beforeProcessing")
+    public void beforeProcessing(HttpServletResponse response){
+
+        InputStream inputStream = null;
+        OutputStream outputStream = null;
+        try {
+            inputStream = new BufferedInputStream(new FileInputStream("E:/test/test.dcm"));
+            outputStream = response.getOutputStream();
+            int l = 0;
+            byte[] buffer = new byte[4096];
+            while((l = inputStream.read(buffer)) != -1){
+                outputStream.write(buffer, 0, l);
+            }
+            outputStream.flush();
+            inputStream.close();
+            outputStream.close();
+        } catch (java.io.IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (inputStream != null) {
+                try {
+                    inputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (outputStream != null) {
+                try {
+                    outputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
     }
 
     @RequestMapping("/predict/{ctId}")

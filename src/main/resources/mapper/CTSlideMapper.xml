@@ -54,6 +54,10 @@
         SELECT * FROM ct_slide WHERE ctId = #{ctId,jdbcType=INTEGER}
     </select>
 
+    <select id="selectByTwo" resultType="cn.edu.zju.isee.cms.entity.CTSlide" parameterType="java.lang.Integer">
+        SELECT * FROM ct_slide WHERE ctId = #{ctId,jdbcType=INTEGER} AND serialNum = #{serialNum,jdbcType=INTEGER}
+    </select>
+
     <update id="updateById" parameterType="cn.edu.zju.isee.cms.entity.CTSlide">
         UPDATE ct_slide SET
         <!--<if test="id != null" >-->
