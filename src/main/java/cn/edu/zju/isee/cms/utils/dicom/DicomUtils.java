@@ -53,12 +53,10 @@ public class DicomUtils {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            saveName = saveName.substring(0,27) + slicePosition + ".jpg";
+            saveName = saveName.replace("dcm", "jpgs");
             if (!saveName.endsWith(".jpg")) {
-                int index = saveName.lastIndexOf("/");
-                saveName = saveName.substring(0, index);
-                saveName = saveName + "/" + df.format(slicePosition) + ".jpg";
-            } else {
-                System.err.println("请注意文件名。");
+                System.err.println("请注意文件名。" + saveName);
             }
             File file2 = new File(saveName);
             File parent = file2.getParentFile();
@@ -80,12 +78,12 @@ public class DicomUtils {
 
     public static void main(String[] args) {
 
-        String rootDir = "/run/media/root/d9cfb292-d889-4b63-b220-d81968d410c3/lidc/kaola/lidc-min";
+        String rootDir = "D:\\lung\\dcm";
         List<String> list = FileUtils.getFileList(new File(rootDir), new ArrayList<>(), ".dcm");
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         for (String fileName : list) {
-            String subStr = fileName.replace("lidc-min", "lidc-min-jpgs");
-            System.out.println("@@@@######" + subStr);
-            dicomToJpg(fileName, subStr);
+            System.out.println("@@@@######" + fileName);
+            dicomToJpg(fileName, fileName);
         }
     }
 
